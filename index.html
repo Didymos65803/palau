@@ -169,25 +169,17 @@
                 <p class="text-slate-500 text-sm">請輸入您的姓名以開始使用</p>
             </div>
 
-            <form onsubmit="handleLogin(event)" class="space-y-4">
-                <div>
-                    <input type="text" id="login-name" required
-                        class="w-full text-center bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 text-lg font-bold focus:outline-none focus:ring-2 focus:ring-ocean-500 focus:border-transparent transition-all placeholder:font-normal"
-                        placeholder="您的名字">
-                </div>
-                <!-- Optional: Quick Select -->
-                <div class="flex gap-2 justify-center">
-                    <button type="button" onclick="quickLogin('Alice')"
-                        class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-xs text-slate-500 rounded-full transition">Alice</button>
-                    <button type="button" onclick="quickLogin('Bob')"
-                        class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-xs text-slate-500 rounded-full transition">Bob</button>
-                    <button type="button" onclick="quickLogin('同學')"
-                        class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-xs text-slate-500 rounded-full transition">同學</button>
-                </div>
+            <div id="login-buttons-container" class="grid grid-cols-2 gap-3 mb-6 max-h-[40vh] overflow-y-auto">
+                <!-- Buttons injected by JS -->
+            </div>
 
+            <form onsubmit="handleLogin(event)" class="relative">
+                <input type="text" id="login-name"
+                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-center font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-ocean-500 mb-4"
+                    placeholder="或輸入其他姓名...">
                 <button type="submit"
-                    class="w-full bg-ocean-600 hover:bg-ocean-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-ocean-200/50 transition transform active:scale-[0.98] mt-4">
-                    進入指揮中心 <i class="fa-solid fa-arrow-right ml-2"></i>
+                    class="w-full bg-slate-800 text-white font-bold py-3 rounded-xl shadow-lg shadow-slate-200 active:scale-95 transition-transform">
+                    確認登入
                 </button>
             </form>
         </div>
@@ -592,7 +584,6 @@
                     <header class="flex justify-between items-start mb-6 pt-2">
                         <div>
                             <p class="text-slate-400 text-sm font-medium uppercase tracking-wide">Hi, <span id="user-greeting" class="text-ocean-600 font-bold">${State.user || 'Guest'}</span> 
-                                <span class="text-xs px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 ml-1 border border-slate-200">${DATA.roleLabels[userRole] || '訪客'}</span>
                             </p>
                             <h1 class="text-2xl font-bold text-slate-800">指揮中心 <span class="text-ocean-500">.</span></h1>
                         </div>
@@ -834,6 +825,13 @@
                         : ''}
                             </div>
                         `).join('')}
+                    </div>
+                    <!-- System Actions -->
+                    <div class="mt-8 border-t border-slate-200 pt-6">
+                        <button onclick="logout()" class="w-full bg-slate-200 text-slate-600 font-bold py-3 rounded-xl shadow-sm hover:bg-slate-300 transition-colors">
+                            <i class="fa-solid fa-right-from-bracket mr-2"></i> 登出系統
+                        </button>
+                        <p class="text-center text-xs text-slate-400 mt-4">Palau Command Center v1.0</p>
                     </div>
                 </div>
                 `;
@@ -1134,6 +1132,37 @@
 
 
 
+
+        function renderLoginButtons() {
+            const container = document.getElementById('login-buttons-container');
+            if (!container) return;
+
+            container.innerHTML = '';
+
+            // Filter for the 9 staff members (exclude Alice/Bob/Admin demos)
+            const staff = [
+                "涂宇軒", "蔡沂恩",
+                "李曜成", "許翌倫", "陳欣鈺",
+                "陳柏翰", "陳子彬",
+                "謝承安", "許孟凱"
+            ];
+
+            staff.forEach(name => {
+                const role = DATA.users[name];
+                const cleanRole = DATA.roleLabels[role] || role;
+
+                const btn = document.createElement('button');
+                btn.onclick = () => quickLogin(name);
+                btn.className = "flex flex-col items-center justify-center p-3 bg-slate-50 border border-slate-200 rounded-xl hover:bg-ocean-50 hover:border-ocean-200 hover:text-ocean-700 transition active:scale-95";
+
+                btn.innerHTML = `
+                    <span class="font-bold text-slate-800 text-sm pointer-events-none">${name}</span>
+                `;
+
+                container.appendChild(btn);
+            });
+        }
+
         function handleLogin(e) {
             e.preventDefault();
             const nameInput = document.getElementById('login-name');
@@ -1161,6 +1190,22 @@
 
             showToast(`歡迎歸隊, ${name}!`);
         }
+
+        window.logout = function () {
+            if (confirm('確定要登出系統嗎？')) {
+                State.user = null;
+                localStorage.removeItem('palau_user');
+
+                // Clear inputs
+                const input = document.getElementById('login-name');
+                if (input) input.value = '';
+
+                // Show modal
+                document.getElementById('login-modal').classList.remove('hidden');
+
+                showToast('已登出系統');
+            }
+        };
 
         function checkLogin() {
             if (!State.user) {
@@ -1297,6 +1342,7 @@
         }
 
         // Initialize App
+        renderLoginButtons();
         checkLogin();
         router.navigate('dashboard');
 
