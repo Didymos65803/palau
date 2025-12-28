@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>帛琉指揮中心</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        ocean: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9', // Primary Brand Color
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        sand: '#f8fafc',
+                        surface: '#ffffff',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for Mobile App Feel */
+        body {
+            -webkit-tap-highlight-color: transparent;
+            overscroll-behavior-y: none;
+            background-color: #f1f5f9;
+            /* Slate-100 */
+        }
+
+        /* Hide Scrollbar but keep functionality */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Safe Area for iPhones */
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .pt-safe {
+            padding-top: env(safe-area-inset-top);
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Bottom Sheet Modal transition */
+        .modal-enter {
+            transform: translateY(100%);
+        }
+
+        .modal-enter-active {
+            transform: translateY(0);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+
+<body class="text-slate-800 antialiased h-screen flex flex-col overflow-hidden bg-slate-50">
+
+    <!-- Main Content Area / Router View -->
+    <main id="app" class="flex-1 overflow-y-auto no-scrollbar pb-24 pt-safe relative">
+        <!-- Dynamic Content Injected Here -->
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <nav
+        class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] pb-safe z-50">
+        <div class="flex justify-around items-center h-16 max-w-md mx-auto">
+            <button onclick="router.navigate('dashboard')"
+                class="nav-btn w-full h-full flex flex-col items-center justify-center text-slate-400 hover:text-ocean-600 active:text-ocean-700 transition-colors"
+                data-target="dashboard">
+                <i class="fa-solid fa-compass text-xl mb-1"></i>
+                <span class="text-[10px] font-medium tracking-wide">營運</span>
+            </button>
+            <button onclick="router.navigate('schedule')"
+                class="nav-btn w-full h-full flex flex-col items-center justify-center text-slate-400 hover:text-ocean-600 active:text-ocean-700 transition-colors"
+                data-target="schedule">
+                <i class="fa-solid fa-timeline text-xl mb-1"></i>
+                <span class="text-[10px] font-medium tracking-wide">行程</span>
+            </button>
+            <button onclick="router.navigate('resources')"
+                class="nav-btn w-full h-full flex flex-col items-center justify-center text-slate-400 hover:text-ocean-600 active:text-ocean-700 transition-colors"
+                data-target="resources">
+                <i class="fa-solid fa-book-open-reader text-xl mb-1"></i>
+                <span class="text-[10px] font-medium tracking-wide">知識</span>
+            </button>
+            <button onclick="router.navigate('accounting')"
+                class="nav-btn w-full h-full flex flex-col items-center justify-center text-slate-400 hover:text-ocean-600 active:text-ocean-700 transition-colors"
+                data-target="accounting">
+                <i class="fa-solid fa-wallet text-xl mb-1"></i>
+                <span class="text-[10px] font-medium tracking-wide">記帳</span>
+            </button>
+            <button onclick="router.navigate('info')"
+                class="nav-btn w-full h-full flex flex-col items-center justify-center text-slate-400 hover:text-ocean-600 active:text-ocean-700 transition-colors"
+                data-target="info">
+                <i class="fa-solid fa-shield-heart text-xl mb-1"></i>
+                <span class="text-[10px] font-medium tracking-wide">安全</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Modal Overlay (Generic) -->
+    <div id="modal-container" class="hidden fixed inset-0 z-[60]" role="dialog" aria-modal="true">
+        <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
+        <div id="modal-content"
+            class="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-xl max-h-[90vh] overflow-y-auto pb-safe modal-enter transition-transform duration-300">
+            <!-- Modal Content Injected Here -->
+        </div>
+    </div>
+
+    <!-- Login Modal (Specific) -->
+    <div id="login-modal"
+        class="hidden fixed inset-0 z-[100] bg-slate-900/90 backdrop-blur-sm flex items-center justify-center p-6">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-8 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-ocean-400 to-ocean-600"></div>
+            <div class="text-center mb-8">
+                <div
+                    class="h-16 w-16 bg-ocean-100 text-ocean-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-inner">
+                    <i class="fa-solid fa-user-astronaut"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-slate-800 mb-1">歡迎登機</h2>
+                <p class="text-slate-500 text-sm">請輸入您的姓名以開始使用</p>
+            </div>
+
+            <form onsubmit="handleLogin(event)" class="space-y-4">
+                <div>
+                    <input type="text" id="login-name" required
+                        class="w-full text-center bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 text-lg font-bold focus:outline-none focus:ring-2 focus:ring-ocean-500 focus:border-transparent transition-all placeholder:font-normal"
+                        placeholder="您的名字">
+                </div>
+                <!-- Optional: Quick Select -->
+                <div class="flex gap-2 justify-center">
+                    <button type="button" onclick="quickLogin('Alice')"
+                        class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-xs text-slate-500 rounded-full transition">Alice</button>
+                    <button type="button" onclick="quickLogin('Bob')"
+                        class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-xs text-slate-500 rounded-full transition">Bob</button>
+                    <button type="button" onclick="quickLogin('同學')"
+                        class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-xs text-slate-500 rounded-full transition">同學</button>
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-ocean-600 hover:bg-ocean-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-ocean-200/50 transition transform active:scale-[0.98] mt-4">
+                    進入指揮中心 <i class="fa-solid fa-arrow-right ml-2"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // DATA STORE - EDIT THIS TO UPDATE CONTENT
+        // ==========================================
+        const DATA = {
+            config: {
+                tripName: "帛琉考察之旅 2026",
+                currency: "USD",
+                weatherCity: "Koror",
+                cloudUrl: "https://script.google.com/macros/s/AKfycbwNt_XSOXtkMvKMbDD9vetFh9bq5mvDTuvrbxqI_XUXpDE_awujiQYym8XNW2fnWwfD/exec"
+            },
+            users: {
+                "涂宇軒": "guide", "蔡沂恩": "guide",
+                "李曜成": "telescope", "許翌倫": "telescope", "陳欣鈺": "telescope",
+                "陳柏翰": "story", "陳子彬": "story",
+                "謝承安": "support", "許孟凱": "support",
+                "Alice": "admin", "Bob": "admin" // Demo
+            },
+            roleLabels: {
+                guide: "導覽組", telescope: "儀器組", story: "故事組", support: "機動組", admin: "管理員"
+            },
+            schedule: [
+                // Day 0: Feb 4 (Tue)
+                { id: 401, day: 0, date: "2/4", time: "13:30", endTime: "16:00", title: "桃園機場集合/登機", location: "TPE 第2航廈", type: "logistics", pic: "Alice", notes: "CI028 航班, 13:30 起飛" },
+                { id: 402, day: 0, date: "2/4", time: "18:30", endTime: "19:30", title: "抵達帛琉/通關", location: "ROR 機場", type: "logistics", pic: "Guide Ken", notes: "當地導遊接機" },
+                { id: 403, day: 0, date: "2/4", time: "20:00", endTime: "21:30", title: "迎賓晚餐", location: "飯店餐廳", type: "food", pic: "Bob", notes: "分配房間" },
+
+                // Day 1: Feb 5 (Wed)
+                { id: 101, day: 1, date: "2/5", time: "07:30", endTime: "08:30", title: "自助早餐", location: "飯店大廳", type: "logistics", pic: "Alice", notes: "確認素食名單" },
+                { id: 102, day: 1, date: "2/5", time: "09:00", endTime: "12:00", title: "珊瑚礁生態導覽", location: "Ebiil 學會", type: "activity", pic: "Dr. Roberts", notes: "攜帶浮潛裝備" },
+                { id: 103, day: 1, date: "2/5", time: "12:00", endTime: "13:30", title: "午餐", location: "碼頭餐廳", type: "food", pic: "Bob", notes: "預訂合菜" },
+                { id: 104, day: 1, date: "2/5", time: "14:00", endTime: "16:00", title: "紅樹林獨木舟", location: "Ngardmau", type: "activity", pic: "Guide Ken", notes: "檢查防曬" },
+
+                // Day 1 Evening - Role Based
+                // 17:50 - 18:30 Setup
+                { id: 1051, day: 1, date: "2/5", time: "17:50", endTime: "18:30", title: "確認動線", location: "觀測點", type: "work", role: "guide", pic: "涂宇軒", notes: "測試擴音器/麥克風" },
+                { id: 1052, day: 1, date: "2/5", time: "17:50", endTime: "18:30", title: "器材定位", location: "觀測點", type: "work", role: "telescope", pic: "李曜成", notes: "架設赤道儀/腳架/除霧帶" },
+                { id: 1053, day: 1, date: "2/5", time: "17:50", endTime: "18:30", title: "故事館開張", location: "觀測點", type: "work", role: "story", pic: "陳柏翰", notes: "佈置燈光/海報/縮時" },
+                { id: 1054, day: 1, date: "2/5", time: "17:50", endTime: "18:30", title: "場地安全", location: "觀測點", type: "work", role: "support", pic: "謝承安", notes: "搬運重物/安裝警示燈" },
+
+                // 18:30 - 19:00 Testing
+                { id: 1061, day: 1, date: "2/5", time: "18:30", endTime: "19:00", title: "最後彩排", location: "觀測點", type: "work", role: "guide", pic: "蔡沂恩", notes: "適應黑暗/指星筆確認" },
+                { id: 1062, day: 1, date: "2/5", time: "18:30", endTime: "19:00", title: "目標校準", location: "觀測點", type: "work", role: "telescope", pic: "許翌倫", notes: "對焦測試/Seestar預拍" },
+                { id: 1063, day: 1, date: "2/5", time: "18:30", endTime: "19:00", title: "全體試拍", location: "觀測點", type: "work", role: "story", pic: "陳子彬", notes: "ISO設定/工作照" },
+                { id: 1064, day: 1, date: "2/5", time: "18:30", endTime: "19:00", title: "人員引導", location: "入口", type: "work", role: "support", pic: "許孟凱", notes: "引導學生/手電筒管制" },
+
+                // 19:00 - 19:10 Opening
+                { id: 1070, day: 1, date: "2/5", time: "19:00", endTime: "19:10", title: "觀測活動開場", location: "觀測點", type: "activity", role: "all", pic: "Host", notes: "規則說明" },
+
+                // 19:10 - 19:30 Guide S1
+                { id: 1071, day: 1, date: "2/5", time: "19:10", endTime: "19:30", title: "主講：西洋星座", location: "觀測點", type: "activity", role: "guide", pic: "涂宇軒", notes: "方位辨識" },
+                { id: 1072, day: 1, date: "2/5", time: "19:10", endTime: "19:30", title: "配合導覽指向", location: "觀測點", type: "work", role: "telescope", pic: "李曜成", notes: "亮星/行星" },
+                { id: 1073, day: 1, date: "2/5", time: "19:10", endTime: "19:30", title: "合影紀錄", location: "觀測點", type: "work", role: "story", pic: "陳柏翰", notes: "與星空合影" },
+                { id: 1074, day: 1, date: "2/5", time: "19:10", endTime: "19:30", title: "安全巡視", location: "周邊", type: "work", role: "support", pic: "謝承安", notes: "外來干擾/學生安全" },
+
+                // 19:30 - 19:50 Free Time
+                { id: 1080, day: 1, date: "2/5", time: "19:30", endTime: "19:50", title: "自由觀測 A", location: "觀測點", type: "activity", role: "all", pic: "All", notes: "分組交流" },
+                { id: 1082, day: 1, date: "2/5", time: "19:30", endTime: "19:50", title: "儀器操作解說", location: "望遠鏡區", type: "work", role: "telescope", pic: "陳欣鈺", notes: "月球/土星/木星" },
+                { id: 1083, day: 1, date: "2/5", time: "19:30", endTime: "19:50", title: "故事收集/簽名", location: "故事館", type: "work", role: "story", pic: "陳子彬", notes: "主動搭話/發明信片" },
+                { id: 1084, day: 1, date: "2/5", time: "19:30", endTime: "19:50", title: "人流管控", location: "望遠鏡區", type: "work", role: "support", pic: "許孟凱", notes: "排隊動線/器材防撞" },
+
+                // 19:50 - 20:10 Guide S2
+                { id: 1091, day: 1, date: "2/5", time: "19:50", endTime: "20:10", title: "主講：深空天體", location: "觀測點", type: "activity", role: "guide", pic: "蔡沂恩", notes: "神話故事" },
+                { id: 1092, day: 1, date: "2/5", time: "19:50", endTime: "20:10", title: "目標切換", location: "觀測點", type: "work", role: "telescope", pic: "許翌倫", notes: "M42, M45" },
+                { id: 1094, day: 1, date: "2/5", time: "19:50", endTime: "20:10", title: "秩序維護", location: "後方", type: "work", role: "support", pic: "謝承安", notes: "聚集人群/安靜" },
+
+                // 20:10 - 20:40 Free Time B
+                { id: 1100, day: 1, date: "2/5", time: "20:10", endTime: "20:40", title: "自由觀測 B", location: "觀測點", type: "activity", role: "all", pic: "All", notes: "進階觀測" },
+
+                // 20:40 - 21:00 Cleanup
+                { id: 1111, day: 1, date: "2/5", time: "20:40", endTime: "21:00", title: "送客/撤收", location: "觀測點", type: "work", role: "guide", pic: "All", notes: "感謝參與" },
+                { id: 1112, day: 1, date: "2/5", time: "20:40", endTime: "21:00", title: "精密撤收", location: "器材區", type: "work", role: "telescope", pic: "李曜成", notes: "歸零/鏡頭蓋/配件點收" },
+                { id: 1113, day: 1, date: "2/5", time: "20:40", endTime: "21:00", title: "影像備份", location: "故事館", type: "work", role: "story", pic: "陳柏翰", notes: "收納記憶卡" },
+                { id: 1114, day: 1, date: "2/5", time: "20:40", endTime: "21:00", title: "場地復原", location: "全場", type: "work", role: "support", pic: "謝承安", notes: "垃圾巡檢/回收警示燈" },
+
+                // Day 2: Feb 6 (Thu)
+                { id: 201, day: 2, date: "2/6", time: "08:00", endTime: "09:00", title: "早餐", location: "飯店大廳", type: "logistics", pic: "Alice", notes: "" },
+                { id: 202, day: 2, date: "2/6", time: "09:30", endTime: "11:30", title: "水母湖健行", location: "Eil Malk", type: "activity", pic: "Guide Sarah", notes: "需要許可證" },
+                { id: 203, day: 2, date: "2/6", time: "12:00", endTime: "13:30", title: "無人島午餐", location: "Rock Islands", type: "food", pic: "Bob", notes: "Bento Box" },
+                { id: 204, day: 2, date: "2/6", time: "14:00", endTime: "16:00", title: "牛奶湖 SPA", location: "Milky Way", type: "activity", pic: "Guide Ken", notes: "全身泥浴體驗" },
+
+                // Day 3: Feb 7 (Fri)
+                { id: 301, day: 3, date: "2/7", time: "09:00", endTime: "16:00", title: "PCC 參訪交流", location: "Palau Comm. College", type: "activity", pic: "Principal", notes: "著正式服裝" },
+
+                // Day 4: Feb 8 (Sat)
+                { id: 401, day: 4, date: "2/8", time: "09:00", endTime: "12:00", title: "大斷層浮潛", location: "Big Drop-off", type: "activity", pic: "Guide Sarah", notes: "注意海流" },
+                { id: 402, day: 4, date: "2/8", time: "14:00", endTime: "17:00", title: "鯊魚城", location: "Shark City", type: "activity", pic: "Guide Ken", notes: "" },
+
+                // Day 5: Feb 9 (Sun)
+                { id: 501, day: 5, date: "2/9", time: "10:00", endTime: "14:00", title: "KB 大橋公園", location: "KB Bridge", type: "activity", pic: "Alice", notes: "自由活動/野餐" },
+
+                // Day 6: Feb 10 (Mon)
+                { id: 601, day: 6, date: "2/10", time: "09:00", endTime: "15:00", title: "北島瀑布健行", location: "Ngardmau Falls", type: "activity", pic: "Guide Ken", notes: "需步行 40 分鐘" },
+
+                // Day 7: Feb 11 (Tue)
+                { id: 701, day: 7, date: "2/11", time: "09:00", endTime: "11:00", title: "國家博物館", location: "National Museum", type: "activity", pic: "Dr. Roberts", notes: "歷史講座" },
+                { id: 702, day: 7, date: "2/11", time: "18:00", endTime: "21:00", title: "惜別晚宴", location: "飯店宴會廳", type: "food", pic: "All Staff", notes: "頒發證書" },
+
+                // Day 8: Feb 12 (Wed)
+                { id: 801, day: 8, date: "2/12", time: "10:00", endTime: "11:00", title: "退房/前往機場", location: "飯店大廳", type: "logistics", pic: "Alice", notes: "檢查護照" },
+                { id: 802, day: 8, date: "2/12", time: "13:00", endTime: "18:00", title: "返抵國門", location: "TPE", type: "logistics", pic: "Alice", notes: "解散" }
+            ],
+            courses: [
+                {
+                    id: "c1",
+                    title: "海洋生物學",
+                    icon: "fa-fish",
+                    color: "bg-blue-100 text-blue-700",
+                    vocab: [
+                        { en: "Coral Reef", pl: "Merir", zh: "珊瑚礁" },
+                        { en: "Jellyfish", pl: "Bung", zh: "水母" },
+                        { en: "Tide", pl: "Yolt", zh: "潮汐" }
+                    ],
+                    quiz: [
+                        { q: "珊瑚共生的主要藻類是什麼？", options: ["蟲黃藻 (Zooxanthellae)", "浮游植物", "海帶", "海草"], ans: 0 },
+                        { q: "以下哪種不是硬珊瑚？", options: ["腦紋珊瑚", "鹿角珊瑚", "海扇", "桌面珊瑚"], ans: 2 }
+                    ],
+                    notes: ["重點講述共生關係。", "解釋珊瑚白化的原因。"]
+                },
+                {
+                    id: "c2",
+                    title: "帛琉歷史",
+                    icon: "fa-landmark",
+                    color: "bg-amber-100 text-amber-700",
+                    vocab: [
+                        { en: "Bai", pl: "Bai", zh: "男人會館" },
+                        { en: "Money", pl: "Udoud", zh: "鳥錢 (Udoud)" },
+                        { en: "Chief", pl: "Rubak", zh: "酋長" }
+                    ],
+                    quiz: [
+                        { q: "帛琉傳統的聚會場所叫什麼？", options: ["Fale", "Bai", "Marae", "Hut"], ans: 1 }
+                    ],
+                    notes: ["解釋母系社會制度。", "展示男人會館的建築圖片。"]
+                },
+                {
+                    id: "c3",
+                    title: "天文學",
+                    icon: "fa-star",
+                    color: "bg-violet-100 text-violet-700",
+                    vocab: [
+                        { en: "Cassiopeia", pl: "", zh: "仙后座" },
+                        { en: "magnitude", pl: "", zh: "星等；強度" },
+                        { en: "Sidereal day", pl: "", zh: "恆星時" },
+                        { en: "Polaris/ the north star", pl: "", zh: "北極星" },
+                        { en: "Solar day", pl: "", zh: "太陽時" },
+                        { en: "galaxy", pl: "", zh: "星系" },
+                        { en: "rotate (v.) rotation (n.)", pl: "", zh: "自轉" },
+                        { en: "tripod", pl: "", zh: "腳架" },
+                        { en: "revolve", pl: "", zh: "公轉" },
+                        { en: "astrophotography", pl: "", zh: "天文攝影" },
+                        { en: "Tilt angle", pl: "", zh: "傾角" },
+                        { en: "the Milky Way", pl: "", zh: "銀河" },
+                        { en: "Star cluster", pl: "", zh: "星團" },
+                        { en: "gear", pl: "", zh: "設備" },
+                        { en: "Summer/ Winter solstice", pl: "", zh: "夏／冬至" },
+                        { en: "star trails", pl: "", zh: "星軌（跡）" },
+                        { en: "Spring/ Autumnal equinox", pl: "", zh: "春／秋分" },
+                        { en: "shutter", pl: "", zh: "快門" },
+                        { en: "Pleiades", pl: "", zh: "昴宿星團" },
+                        { en: "exposure", pl: "", zh: "曝光" },
+                        { en: "Ursa Major", pl: "", zh: "大熊座" },
+                        { en: "ISO", pl: "", zh: "感光度" },
+                        { en: "Ursa Minor", pl: "", zh: "小熊座" },
+                        { en: "aperture", pl: "", zh: "光圈；口徑" },
+                        { en: "Magnification", pl: "", zh: "放大倍率" },
+                        { en: "sensor", pl: "", zh: "感測器" },
+                        { en: "longitude", pl: "", zh: "經度" },
+                        { en: "sensitivity", pl: "", zh: "敏感度" },
+                        { en: "latitude", pl: "", zh: "緯度" },
+                        { en: "stack", pl: "", zh: "疊（圖）" },
+                        { en: "celestial", pl: "", zh: "天球" },
+                        { en: "post-processing", pl: "", zh: "後置" },
+                        { en: "hemisphere", pl: "", zh: "半球" },
+                        { en: "noise", pl: "", zh: "雜訊" },
+                        { en: "ecliptic", pl: "", zh: "黃道" },
+                        { en: "pupil", pl: "", zh: "瞳孔" },
+                        { en: "Lunar path", pl: "", zh: "白道" },
+                        { en: "canvas", pl: "", zh: "畫布" },
+                        { en: "constellation", pl: "", zh: "星座" },
+                        { en: "paintbrush", pl: "", zh: "畫筆" },
+                        { en: "Zodiac sign", pl: "", zh: "黃道12宮" },
+                        { en: "observatory", pl: "", zh: "天文台" },
+                        { en: "Scorpion", pl: "", zh: "天蠍座" },
+                        { en: "binocular", pl: "", zh: "雙筒望遠鏡" },
+                        { en: "Taurus", pl: "", zh: "金牛座" },
+                        { en: "Pinwheel Galaxy", pl: "", zh: "風車星系" },
+                        { en: "Canis Major", pl: "", zh: "大犬座" },
+                        { en: "Andromeda Galaxy", pl: "", zh: "仙女座大星系" },
+                        { en: "Sirius", pl: "", zh: "天狼星" },
+                        { en: "Deep Sky Objects (DSO)", pl: "", zh: "深空天體" },
+                        { en: "Canis Minor", pl: "", zh: "小犬座" },
+                        { en: "nebula", pl: "", zh: "星雲" },
+                        { en: "Procyon", pl: "", zh: "南河三" },
+                        { en: "cluster", pl: "", zh: "星團" },
+                        { en: "Orion", pl: "", zh: "獵戶座" },
+                        { en: "Trifid Nebula", pl: "", zh: "三裂星雲" },
+                        { en: "Rigel", pl: "", zh: "參宿七" },
+                        { en: "Horsehead Nebula", pl: "", zh: "馬頭星雲" },
+                        { en: "Betelgeuse", pl: "", zh: "參宿四" },
+                        { en: "eyepiece", pl: "", zh: "目鏡" },
+                        { en: "Aldebaran", pl: "", zh: "畢宿五" },
+                        { en: "objective lens", pl: "", zh: "物鏡" },
+                        { en: "Capella", pl: "", zh: "五車二" },
+                        { en: "finderscope", pl: "", zh: "尋星鏡" },
+                        { en: "Castor", pl: "", zh: "北河二" },
+                        { en: "mount", pl: "", zh: "底座" },
+                        { en: "Pollux", pl: "", zh: "北河三" },
+                        { en: "declination/ Dec.", pl: "", zh: "赤緯" },
+                        { en: "Auriga", pl: "", zh: "御夫座" },
+                        { en: "right ascension/ R.A.", pl: "", zh: "赤經" },
+                        { en: "Puppis", pl: "", zh: "船底座" },
+                        { en: "Equatorial Mount", pl: "", zh: "赤道儀" },
+                        { en: "Canopus", pl: "", zh: "老人星" },
+                        { en: "Alt-Az mount", pl: "", zh: "經緯儀" },
+                        { en: "Eridanus", pl: "", zh: "波江座" },
+                        { en: "astronomer", pl: "", zh: "天文學家" },
+                        { en: "Achernar", pl: "", zh: "水委一" },
+                        { en: "German Equatorial Mount", pl: "", zh: "德式赤道儀" },
+                        { en: "Vela", pl: "", zh: "帆船座" },
+                        { en: "Fork Mount", pl: "", zh: "叉式赤道儀" },
+                        { en: "Regor", pl: "", zh: "天社一" },
+                        { en: "English/ Yoke Mount", pl: "", zh: "英式赤道儀" },
+                        { en: "Tropic of Cancer", pl: "", zh: "北迴歸線" },
+                        { en: "refractor", pl: "", zh: "折射式" },
+                        { en: "Tropic of Capricorn", pl: "", zh: "南迴歸線" },
+                        { en: "reflector", pl: "", zh: "反射式" },
+                        { en: "Andromeda", pl: "", zh: "仙女座" },
+                        { en: "catadioptric", pl: "", zh: "折反射式" },
+                        { en: "Cepheus", pl: "", zh: "仙王座" },
+                        { en: "chromatic aberration", pl: "", zh: "色差" },
+                        { en: "Saturn", pl: "", zh: "土星" },
+                        { en: "Newtonian", pl: "", zh: "牛頓式" },
+                        { en: "Jupiter", pl: "", zh: "木星" },
+                        { en: "Cassegrain", pl: "", zh: "凱薩格林式" },
+                        { en: "focal length", pl: "", zh: "焦長" },
+                        { en: "focal ratio", pl: "", zh: "焦比" },
+                        { en: "frame", pl: "", zh: "構圖；聚焦" },
+                        { en: "Large Magellanic Cloud", pl: "", zh: "大麥哲倫星雲" },
+                        { en: "degree", pl: "", zh: "度" },
+                        { en: "arcminute", pl: "", zh: "角分" },
+                        { en: "arcsecond", pl: "", zh: "角秒" }
+                    ],
+                    quiz: [
+                        { q: "北極星屬於哪個星座？", options: ["小熊座", "大熊座", "仙后座", "天龍座"], ans: 0 },
+                        { q: "哪種裝置是用來消除地球自轉影響的？", options: ["經緯儀", "赤道儀", "三腳架", "尋星鏡"], ans: 1 }
+                    ],
+                    notes: ["星等越小越亮", "夏季大三角：織女、牛郎、天津四"]
+                }
+            ],
+            accounting: {
+                totalBudget: 5000,
+                expenses: [] // Will fetch from cloud
+            },
+            roster: [
+                { id: 1, name: "陳小明 (Alex)", group: "A", special: null },
+                { id: 2, name: "張莎拉 (Sarah)", group: "A", special: "花生過敏 (有備藥)" },
+                { id: 3, name: "王大偉 (Mike)", group: "B", special: null },
+                { id: 4, name: "吳珍妮 (Jenny)", group: "B", special: "氣喘" }
+            ],
+            emergency: [
+                { name: "當地導遊 (Ken)", phone: "+680-123-4567" },
+                { name: "帛琉國家醫院", phone: "+680-488-2558" },
+                { name: "美國/台灣大使館", phone: "+680-587-2920" }
+            ]
+        };
+
+        // ==========================================
+        // STATE MANAGEMENT
+        // ==========================================
+        const State = {
+            currentTab: 'dashboard',
+            expandedSchedule: null,
+            expenses: [],
+            isSyncing: false,
+            user: localStorage.getItem('palau_user') || null
+        };
+
+        // ==========================================
+        // ROUTER & RENDERING
+        // ==========================================
+        const router = {
+            navigate: (page) => {
+                State.currentTab = page;
+
+                // Update specific section rendering
+                const app = document.getElementById('app');
+                app.innerHTML = pages[page]();
+
+                // Update styling
+                document.querySelectorAll('.nav-btn').forEach(btn => {
+                    const icon = btn.querySelector('i');
+                    const text = btn.querySelector('span');
+
+                    if (btn.dataset.target === page) {
+                        btn.classList.add('text-ocean-600');
+                        btn.classList.remove('text-slate-400');
+                        icon.classList.add('fa-bounce');
+                        setTimeout(() => icon.classList.remove('fa-bounce'), 500);
+                    } else {
+                        btn.classList.remove('text-ocean-600');
+                        btn.classList.add('text-slate-400');
+                    }
+                });
+
+                // Run specific post-render logic
+                if (page === 'dashboard') initDashboard();
+                if (page === 'schedule') initSchedule();
+                if (page === 'accounting') {
+                    // Try to fetch latest data when entering accounting
+                    fetchExpenses();
+                }
+            }
+        };
+
+        // ==========================================
+        // PAGE TEMPLATES
+        // ==========================================
+        const pages = {
+            dashboard: () => {
+                const now = new Date();
+                const currentHour = now.getHours();
+                const currentMinute = now.getMinutes();
+                const currentTimeVal = currentHour * 60 + currentMinute;
+
+                // Parse "HH:MM" to minutes for comparison
+                const parseTime = (t) => {
+                    const [h, m] = t.split(':').map(Number);
+                    return h * 60 + m;
+                };
+
+                // Helper: Get User Role
+                const getRole = (name) => DATA.users[name] || null;
+                const userRole = getRole(State.user);
+
+                let day = 1; // Default to Day 1 (Feb 5) for demo to show the night schedule
+
+                let currentActivity = DATA.schedule.find(s => {
+                    if (s.day !== day) return false;
+                    const start = parseTime(s.time);
+                    const end = parseTime(s.endTime);
+
+                    // Role Filter: Show if no role specified OR matching role OR "all"
+                    const roleMatch = !s.role || s.role === 'all' || s.role === userRole;
+
+                    return currentTimeVal >= start && currentTimeVal < end && roleMatch;
+                });
+
+                let nextActivity = DATA.schedule.find(s => {
+                    if (s.day !== day) return false;
+                    const start = parseTime(s.time);
+
+                    const roleMatch = !s.role || s.role === 'all' || s.role === userRole;
+
+                    return start > currentTimeVal && roleMatch;
+                });
+
+                const nowCard = currentActivity
+                    ? `<div class="bg-gradient-to-br from-ocean-500 to-ocean-600 rounded-2xl p-6 text-white shadow-lg shadow-ocean-200 mb-6 relative overflow-hidden transform transition-all hover:scale-[1.02]">
+                        <div class="absolute top-0 right-0 p-4 opacity-20"><i class="fa-solid fa-person-running text-8xl"></i></div>
+                        <div class="relative z-10">
+                           <div class="flex items-center space-x-2 opacity-90 mb-1">
+                                <span class="uppercase tracking-wider text-[10px] font-bold bg-white/20 px-2 py-0.5 rounded shadow-sm animate-pulse">正在進行</span>
+                                <span class="text-sm font-medium"><i class="fa-regular fa-clock mr-1"></i>${currentActivity.time} - ${currentActivity.endTime}</span>
+                           </div>
+                           <h2 class="text-3xl font-bold mb-1 leading-tight text-shadow-sm">${currentActivity.title}</h2>
+                           <p class="text-ocean-50 mb-4 flex items-center shadow-black/10"><i class="fa-solid fa-location-dot mr-2"></i> ${currentActivity.location}</p>
+                           
+                           <div class="flex space-x-3">
+                                <button class="bg-white/20 hover:bg-white/30 backdrop-blur text-sm font-semibold py-2 px-4 rounded-lg transition active:bg-white/40" onclick="showToast('通知 ${currentActivity.pic} 中...')">
+                                    <i class="fa-solid fa-walkie-talkie mr-1"></i> 聯絡負責人
+                                </button> 
+                           </div>
+                        </div>
+                       </div>`
+                    : `<div class="bg-slate-800 rounded-2xl p-6 text-white shadow-lg mb-6 relative overflow-hidden">
+                        <div class="absolute right-0 top-0 p-4 opacity-10"><i class="fa-solid fa-moon text-6xl"></i></div>
+                        <h2 class="text-xl font-bold relative z-10">目前無活動</h2>
+                        <p class="text-slate-400 text-sm relative z-10">休息時間</p>
+                       </div>`;
+
+                const nextCard = nextActivity
+                    ? `<div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm mb-8 flex items-center justify-between active:scale-[0.99] transition-transform cursor-pointer" onclick="router.navigate('schedule')">
+                            <div>
+                                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">下一個活動</p>
+                                <h3 class="text-lg font-bold text-slate-800">${nextActivity.title}</h3>
+                                <p class="text-sm text-ocean-600 font-medium">${nextActivity.time} @ ${nextActivity.location}</p>
+                            </div>
+                            <div class="h-10 w-10 bg-ocean-50 rounded-full flex items-center justify-center text-ocean-500">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </div>
+                        </div>`
+                    : '';
+
+                return `
+                <div class="p-6 fade-in max-w-md mx-auto">
+                    <!-- Header -->
+                    <header class="flex justify-between items-start mb-6 pt-2">
+                        <div>
+                            <p class="text-slate-400 text-sm font-medium uppercase tracking-wide">Hi, <span id="user-greeting" class="text-ocean-600 font-bold">${State.user || 'Guest'}</span> 
+                                <span class="text-xs px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 ml-1 border border-slate-200">${DATA.roleLabels[userRole] || '訪客'}</span>
+                            </p>
+                            <h1 class="text-2xl font-bold text-slate-800">指揮中心 <span class="text-ocean-500">.</span></h1>
+                        </div>
+                        <div class="text-right">
+                             <div class="flex items-center justify-end text-slate-700">
+                                <i class="fa-solid fa-cloud-sun text-ocean-400 mr-2"></i>
+                                <span class="font-bold text-xl">28°C</span>
+                             </div>
+                             <p class="text-xs text-slate-400">Koror, Palau</p>
+                        </div>
+                    </header>
+
+                    ${nowCard}
+                    ${nextCard}
+
+                    <!-- Quick Actions Grid -->
+                    <h3 class="font-bold text-slate-800 mb-4 px-1">快速功能</h3>
+                    <div class="grid grid-cols-2 gap-4 mb-24">
+                        <button onclick="router.navigate('roster')" class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex flex-col items-center justify-center gap-3 active:scale-95 transition-transform hover:shadow-md">
+                            <div class="h-12 w-12 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-clipboard-check"></i>
+                            </div>
+                            <span class="font-semibold text-sm text-slate-700">點名</span>
+                        </button>
+                        <button onclick="router.navigate('accounting')" class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex flex-col items-center justify-center gap-3 active:scale-95 transition-transform hover:shadow-md">
+                             <div class="h-12 w-12 rounded-full bg-violet-50 text-violet-500 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-receipt"></i>
+                            </div>
+                            <span class="font-semibold text-sm text-slate-700">新增花費</span>
+                        </button>
+                        <button onclick="router.navigate('info')" class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex flex-col items-center justify-center text-rose-500 gap-3 active:scale-95 transition-transform col-span-2 border-rose-50 bg-rose-50/10 hover:bg-rose-50/20">
+                             <div class="h-12 w-12 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-phone-volume"></i>
+                            </div>
+                            <span class="font-semibold text-sm text-rose-700">緊急聯絡</span>
+                        </button>
+                    </div>
+                </div>
+                `;
+            },
+            schedule: () => {
+                return `
+                <div class="fade-in max-w-md mx-auto min-h-screen bg-slate-50">
+                    <header class="bg-white sticky top-0 z-30 shadow-sm border-b border-slate-100">
+                        <div class="px-6 py-4 pb-2">
+                             <h1 class="text-xl font-bold mb-2">行程總覽</h1>
+                        </div>
+                        <!-- Scrollable Tabs -->
+                        <div id="schedule-tabs" class="flex overflow-x-auto no-scrollbar px-4 pb-3 gap-2 snap-x">
+                            <!-- Injected via initSchedule -->
+                        </div>
+                    </header>
+                    
+                    <div class="p-6 relative min-h-[500px]">
+                         <!-- Vertical Line -->
+                        <div class="absolute left-[42px] top-6 bottom-6 w-0.5 bg-slate-200"></div>
+                        
+                        <div id="schedule-list" class="space-y-6 pb-20">
+                            <!-- Injected via renderScheduleList -->
+                        </div>
+                    </div>
+                </div>
+                `;
+            },
+            resources: () => {
+                const coursesHtml = DATA.courses.map(course => `
+                    <div class="bg-white rounded-xl p-0 shadow-sm border border-slate-100 mb-4 overflow-hidden">
+                        <div class="p-5 flex items-start gap-4">
+                            <div class="h-12 w-12 rounded-lg ${course.color} flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid ${course.icon}"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-bold text-lg text-slate-800">${course.title}</h3>
+                                <p class="text-slate-500 text-sm mb-3">${course.vocab.length} 個詞彙 • ${course.quiz.length} 題測驗</p>
+                                
+                                <div class="flex gap-2">
+                                    <button class="flex-1 px-3 py-2 bg-slate-50 hover:bg-slate-100 rounded-lg text-xs font-semibold text-slate-700 transition" onclick="toggleResourceDetails('${course.id}')">
+                                        查看內容
+                                    </button>
+                                     <button class="px-3 py-2 bg-ocean-50 text-ocean-600 rounded-lg text-xs font-bold transition" onclick="startQuiz('${course.id}')">
+                                        開始測驗
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Accordion Content -->
+                        <div id="resource-${course.id}" class="hidden border-t border-slate-100 bg-slate-50/50">
+                            <!-- Vocab -->
+                            <div class="p-4">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">單字表</h4>
+                                <div class="bg-white rounded-lg border border-slate-200 overflow-hidden divide-y divide-slate-100">
+                                    ${course.vocab.map(v => `
+                                        <div class="p-3 text-sm grid grid-cols-3 gap-2">
+                                            <span class="font-medium text-slate-800">${v.en}</span>
+                                            <span class="text-ocean-600 font-serif italic">${v.pl}</span>
+                                            <span class="text-slate-400 text-right">${v.zh}</span>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                            
+                            <!-- Notes -->
+                             <div class="px-4 pb-4">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">教學筆記</h4>
+                                <ul class="list-disc list-inside text-sm text-slate-600 space-y-1">
+                                    ${course.notes.map(n => `<li>${n}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                return `
+                <div class="p-6 fade-in max-w-md mx-auto">
+                    <header class="mb-6">
+                        <h1 class="text-2xl font-bold text-slate-800">知識庫</h1>
+                        <p class="text-slate-500 text-sm">課程教材與教學輔助工具</p>
+                    </header>
+                    <div>${coursesHtml}</div>
+                </div>
+                `;
+            },
+            accounting: () => {
+                const totalSpent = State.expenses.reduce((acc, curr) => acc + curr.amount, 0);
+                const remaining = DATA.accounting.totalBudget - totalSpent;
+
+                let syncText = State.isSyncing
+                    ? `<span class="text-ocean-500 animate-pulse"><i class="fa-solid fa-rotate"></i> 更新中...</span>`
+                    : DATA.config.cloudUrl ? `<span class="text-emerald-500"><i class="fa-solid fa-cloud"></i> 已連線</span>` : `<span class="text-slate-400"><i class="fa-solid fa-cloud-slash"></i> 本地模式</span>`;
+
+                return `
+                <div class="p-6 fade-in max-w-md mx-auto">
+                    <header class="mb-6">
+                        <h1 class="text-2xl font-bold text-slate-800">預算管理</h1>
+                        <p id="sync-status" class="text-xs text-slate-400 mt-1 font-bold">${syncText}</p>
+                    </header>
+                    
+                    <!-- Summary Cards -->
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                         <div class="bg-slate-800 text-white p-5 rounded-xl shadow-lg">
+                            <p class="text-slate-400 text-xs font-bold uppercase mb-1">剩餘預算</p>
+                            <p id="val-remaining" class="text-2xl font-bold tracking-tight">$${remaining.toFixed(2)}</p>
+                         </div>
+                         <div class="bg-white text-slate-800 p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <p class="text-slate-400 text-xs font-bold uppercase mb-1">總支出</p>
+                            <p id="val-spent" class="text-2xl font-bold tracking-tight text-rose-500">$${totalSpent.toFixed(2)}</p>
+                         </div>
+                    </div>
+
+                    <!-- Add Form -->
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-5 mb-8">
+                        <h3 class="font-bold text-lg mb-4">新增記帳</h3>
+                        <form onsubmit="addExpense(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1">項目描述</label>
+                                <input type="text" name="item" required class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-500" placeholder="例如：計程車費">
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 uppercase mb-1">金額 (USD)</label>
+                                    <input type="number" step="0.01" inputmode="decimal" name="amount" required class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-500" placeholder="0.00">
+                                </div>
+                                <div>
+                                     <label class="block text-xs font-bold text-slate-500 uppercase mb-1">類別</label>
+                                     <select name="category" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-500">
+                                        <option value="Food">餐飲</option>
+                                        <option value="Transport">交通</option>
+                                        <option value="Supplies">物資</option>
+                                        <option value="Medical">醫療</option>
+                                        <option value="Other">其他</option>
+                                     </select>
+                                </div>
+                            </div>
+                            <div class="pt-2">
+                                <button type="submit" id="submit-btn" class="w-full bg-ocean-600 hover:bg-ocean-700 text-white font-bold py-3 rounded-lg shadow-ocean-200 shadow-md transition">新增支出</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- History List -->
+                    <h3 class="font-bold text-slate-800 mb-3 px-1">最近交易紀錄</h3>
+                    <div id="history-list" class="bg-white rounded-xl border border-slate-200 overflow-hidden divide-y divide-slate-100">
+                        ${State.expenses.length === 0 ? '<p class="p-4 text-center text-slate-400 text-sm">尚無紀錄</p>' : ''}
+                        ${State.expenses.map(e => `
+                            <div class="p-4 flex justify-between items-center">
+                                <div>
+                                    <p class="font-bold text-sm text-slate-800">${e.item}</p>
+                                    <p class="text-xs text-slate-400 capitalize">${e.category} • ${e.date}</p>
+                                </div>
+                                <span class="font-mono font-bold text-slate-700">-$${e.amount.toFixed(2)}</span>
+                            </div>
+                        `).reverse().join('')}
+                    </div>
+                </div>
+                `;
+            },
+            info: () => {
+                return `
+                <div class="p-6 fade-in max-w-md mx-auto">
+                    <header class="mb-6">
+                        <h1 class="text-2xl font-bold text-slate-800">安全與名單</h1>
+                    </header>
+
+                    <!-- Emergency Buttons -->
+                    <div class="mb-8 space-y-3">
+                        ${DATA.emergency.map(c => `
+                            <a href="tel:${c.phone}" class="flex items-center p-4 bg-white rounded-xl border border-rose-100 shadow-sm hover:bg-rose-50 transition group">
+                                <div class="h-10 w-10 rounded-full bg-rose-100 text-rose-500 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div class="ml-4 flex-1">
+                                    <h4 class="font-bold text-slate-800">${c.name}</h4>
+                                    <p class="text-sm text-slate-500 font-mono">${c.phone}</p>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-rose-300"></i>
+                            </a>
+                        `).join('')}
+                    </div>
+
+                    <!-- Student Roster -->
+                    <h3 class="font-bold text-slate-800 mb-4 px-1">學生名單 (${DATA.roster.length})</h3>
+                    <div class="grid gap-3">
+                        ${DATA.roster.map(s => `
+                            <div class="bg-white p-4 rounded-xl border ${s.special ? 'border-amber-200 bg-amber-50/20' : 'border-slate-100'} shadow-sm flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="h-10 w-10 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center font-bold text-sm">
+                                        ${s.name.charAt(0)}
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-sm text-slate-800">${s.name}</p>
+                                        <p class="text-xs text-slate-400">Group ${s.group}</p>
+                                    </div>
+                                </div>
+                                ${s.special
+                        ? `<div class="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                                        <i class="fa-solid fa-triangle-exclamation"></i> ${s.special}
+                                       </div>`
+                        : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                `;
+            }
+        };
+
+        // ==========================================
+        // HELPERS
+        // ==========================================
+
+        function renderTimelineItem(item) {
+            return `
+            <div class="relative flex gap-4">
+                <!-- Time Column -->
+                <div class="flex flex-col items-center min-w-[3.5rem] pt-1">
+                    <span class="text-sm font-bold text-slate-800">${item.time}</span>
+                    <span class="text-xs text-slate-400">${item.endTime}</span>
+                </div>
+                
+                <!-- Dot -->
+                <div class="absolute left-[34px] top-2.5 h-3 w-3 rounded-full border-2 border-white ${getDotColor(item.type)} z-10 shadow-sm"></div>
+
+                <!-- Card -->
+                <div class="flex-1 bg-white rounded-xl p-4 shadow-sm border border-slate-100 mb-2 cursor-pointer transition hover:shadow-md" onclick="toggleDetails(${item.id})">
+                    <div class="flex justify-between items-start">
+                        <h4 class="font-bold text-slate-800">${item.title}</h4>
+                        <div class="text-[10px] uppercase font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded tracking-wide">${item.type}</div>
+                    </div>
+                    <div class="flex items-center text-xs text-slate-500 mt-1 gap-2">
+                         <span><i class="fa-solid fa-location-dot text-ocean-400"></i> ${item.location}</span>
+                         <span>•</span>
+                         <span><i class="fa-solid fa-user text-ocean-400"></i> ${item.pic}</span>
+                    </div>
+
+                    <!-- Expanded Content -->
+                    <div id="details-${item.id}" class="hidden mt-3 pt-3 border-t border-slate-100 text-sm text-slate-600">
+                        <p class="font-medium text-slate-800 mb-1">Notes:</p>
+                        <p>${item.notes || "No additional notes."}</p>
+                    </div>
+                </div>
+            </div>`;
+        }
+
+        function getDotColor(type) {
+            const map = {
+                'activity': 'bg-ocean-500',
+                'logistics': 'bg-slate-400',
+                'food': 'bg-amber-400'
+            };
+            return map[type] || 'bg-slate-300';
+        }
+
+        // ==========================================
+        // CLOUD SYNC
+        // ==========================================
+        async function fetchExpenses() {
+            if (!DATA.config.cloudUrl) return;
+
+            State.isSyncing = true;
+            renderSyncStatus();
+
+            try {
+                const res = await fetch(DATA.config.cloudUrl);
+                const json = await res.json();
+
+                if (json.status === 'success' && json.data) {
+                    State.expenses = json.data;
+                    showToast('已自雲端更新資料');
+
+                    if (State.currentTab === 'accounting') {
+                        updateAccountingStats();
+                    }
+                }
+            } catch (err) {
+                console.error("Sync failed", err);
+                showToast('雲端連線失敗', 'error');
+            } finally {
+                State.isSyncing = false;
+                renderSyncStatus();
+            }
+        }
+
+        function updateAccountingStats() {
+            const totalSpent = State.expenses.reduce((acc, curr) => acc + curr.amount, 0);
+            const remaining = DATA.accounting.totalBudget - totalSpent;
+
+            const elRemaining = document.getElementById('val-remaining');
+            const elSpent = document.getElementById('val-spent');
+            const elHistory = document.getElementById('history-list');
+
+            if (elRemaining) elRemaining.textContent = `$${remaining.toFixed(2)}`;
+            if (elSpent) elSpent.textContent = `$${totalSpent.toFixed(2)}`;
+
+            if (elHistory) {
+                const html = State.expenses.length === 0
+                    ? '<p class="p-4 text-center text-slate-400 text-sm">尚無紀錄</p>'
+                    : State.expenses.map(e => `
+                            <div class="p-4 flex justify-between items-center">
+                                <div>
+                                    <p class="font-bold text-sm text-slate-800">${e.item}</p>
+                                    <p class="text-xs text-slate-400 capitalize">${e.category} • ${e.date}</p>
+                                </div>
+                                <span class="font-mono font-bold text-slate-700">-$${e.amount.toFixed(2)}</span>
+                            </div>
+                        `).reverse().join('');
+                elHistory.innerHTML = html;
+            }
+        }
+
+        async function submitExpenseToCloud(expense) {
+            if (!DATA.config.cloudUrl) {
+                showToast('已儲存於本地 (未設定雲端)', 'warning');
+                return;
+            }
+
+            State.isSyncing = true;
+            renderSyncStatus();
+
+            try {
+                const res = await fetch(DATA.config.cloudUrl, {
+                    method: 'POST',
+                    mode: 'no-cors', // Important for GAS Web App calls from client
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(expense)
+                });
+
+                // With mode: no-cors, we can't read the response properly, so assume success if no throw
+                showToast('已上傳至雲端');
+                // Optional: fetch again to confirm
+                // fetchExpenses();
+            } catch (err) {
+                console.error("Upload failed", err);
+                showToast('上傳失敗, 已存本地', 'error');
+            } finally {
+                State.isSyncing = false;
+                renderSyncStatus();
+            }
+        }
+
+        function renderSyncStatus() {
+            // Helper to update just the status line without full re-render if needed
+            const el = document.getElementById('sync-status');
+            if (el) {
+                if (State.isSyncing) el.innerHTML = `<span class="text-ocean-500 animate-pulse"><i class="fa-solid fa-rotate"></i> 更新中...</span>`;
+                else if (DATA.config.cloudUrl) el.innerHTML = `<span class="text-emerald-500"><i class="fa-solid fa-cloud"></i> 已連線</span>`;
+                else el.innerHTML = `<span class="text-slate-400"><i class="fa-solid fa-cloud-slash"></i> 本地模式</span>`;
+            }
+        }
+
+        // ==========================================
+        // ACTIONS & EVENTS
+        // ==========================================
+
+        function toggleDetails(id) {
+            const el = document.getElementById(`details-${id}`);
+            el.classList.toggle('hidden');
+        }
+
+        function toggleResourceDetails(id) {
+            const el = document.getElementById(`resource-${id}`);
+            el.classList.toggle('hidden');
+        }
+
+        function addExpense(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+
+            // Disable button
+            const btn = document.getElementById('submit-btn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>處理中...';
+
+            const newExpense = {
+                id: Date.now(),
+                item: formData.get('item'),
+                amount: parseFloat(formData.get('amount')),
+                category: formData.get('category'),
+                date: new Date().toISOString().split('T')[0],
+                user: State.user || 'Unknown'
+            };
+
+            State.expenses.push(newExpense);
+
+            // Optimistic UI update
+            router.navigate('accounting');
+
+            // Background sync
+            submitExpenseToCloud(newExpense);
+        }
+
+        function initDashboard() {
+            // Dashboard specific listeners if needed
+        }
+
+        // Expose to window to ensure global access
+        // Expose to window to ensure global access
+        window.startQuiz = function (courseId) {
+            console.log('Starting quiz for:', courseId);
+            const course = DATA.courses.find(c => c.id === courseId);
+            if (!course) {
+                console.error('Course not found:', courseId);
+                showToast(`Error: Course ${courseId} not found`);
+                return;
+            }
+
+            const modalContent = document.getElementById('modal-content');
+            if (!modalContent) {
+                console.error('Modal content element missing');
+                showToast('Error: Modal element missing');
+                return;
+            }
+
+            // Force clear and reset
+            modalContent.innerHTML = '';
+            modalContent.classList.remove('translate-y-full');
+            modalContent.classList.add('translate-y-0');
+            modalContent.scrollTop = 0;
+
+            // Determine questions: Dynamic or Static
+            let questions = [];
+            if (course.vocab && course.vocab.length >= 4) {
+                questions = generateQuizQuestions(course.vocab, 5);
+            } else {
+                questions = course.quiz || [];
+            }
+
+            if (questions.length === 0) {
+                showToast('無測驗題目');
+                return;
+            }
+
+            // Build simple quiz HTML
+            let html = `
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-bold">${course.title} Quiz</h2>
+                        <button onclick="closeModal()" class="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500"><i class="fa-solid fa-times"></i></button>
+                    </div>
+                    <div class="space-y-6">
+            `;
+
+            questions.forEach((q, idx) => {
+                html += `
+                    <div class="bg-slate-50 p-4 rounded-xl">
+                        <p class="font-bold text-slate-800 mb-3">${idx + 1}. ${q.q}</p>
+                        <div class="space-y-2">
+                            ${q.options.map((opt, optIdx) => `
+                                <button onclick="checkAnswer(this, ${optIdx === q.ans})" class="w-full text-left p-3 rounded-lg border border-slate-200 bg-white text-sm text-slate-600 hover:bg-ocean-50 transition active:scale-[0.99] flex justify-between items-center group">
+                                    ${opt}
+                                    <i class="fa-solid fa-check hidden text-green-500"></i>
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `
+                    </div>
+                    <button onclick="closeModal()" class="w-full bg-slate-800 text-white font-bold py-3 rounded-xl mt-6 shadow-lg">完成</button>
+                </div>
+            `;
+
+            modalContent.innerHTML = html;
+
+            // Show modal
+            const container = document.getElementById('modal-container');
+            container.classList.remove('hidden');
+        };
+
+        function generateQuizQuestions(vocabList, count) {
+            // Shuffle full list
+            const shuffled = [...vocabList].sort(() => 0.5 - Math.random());
+            // Take top N (or all if less than N)
+            const selected = shuffled.slice(0, Math.min(count, shuffled.length));
+
+            return selected.map(item => {
+                // Correct answer is Chinese definition
+                const correct = item.zh;
+
+                // Pick 3 random distractors from the REST of the list
+                const others = vocabList.filter(v => v.en !== item.en);
+                const distractors = [...others].sort(() => 0.5 - Math.random()).slice(0, 3).map(v => v.zh);
+
+                // Combine and shuffle options
+                const options = [correct, ...distractors].sort(() => 0.5 - Math.random());
+                const ansIndex = options.indexOf(correct);
+
+                return {
+                    q: `What is the meaning of "<span class="text-ocean-600">${item.en}</span>"?`,
+                    options: options,
+                    ans: ansIndex
+                };
+            });
+        }
+
+
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const nameInput = document.getElementById('login-name');
+            const name = nameInput.value.trim();
+            if (name) {
+                performLogin(name);
+            }
+        }
+
+        function quickLogin(name) {
+            document.getElementById('login-name').value = name;
+            // performLogin(name); 
+        }
+
+        function performLogin(name) {
+            State.user = name;
+            localStorage.setItem('palau_user', name);
+
+            // Hide modal
+            document.getElementById('login-modal').classList.add('hidden');
+
+            // Refresh Greeting if on dashboard
+            const greeting = document.getElementById('user-greeting');
+            if (greeting) greeting.textContent = name;
+
+            showToast(`歡迎歸隊, ${name}!`);
+        }
+
+        function checkLogin() {
+            if (!State.user) {
+                document.getElementById('login-modal').classList.remove('hidden');
+            }
+        }
+
+        window.checkAnswer = function (btn, isCorrect) {
+            // Visual feedback
+            const allBtns = btn.parentElement.querySelectorAll('button');
+            allBtns.forEach(b => {
+                b.disabled = true;
+                b.classList.add('opacity-50');
+            });
+
+            btn.classList.remove('opacity-50');
+            if (isCorrect) {
+                btn.classList.add('bg-emerald-50', 'border-emerald-500', 'text-emerald-700');
+                btn.querySelector('.fa-check').classList.remove('hidden');
+            } else {
+                btn.classList.add('bg-rose-50', 'border-rose-500', 'text-rose-700');
+                btn.innerHTML += ' <i class="fa-solid fa-times text-rose-500 ml-auto"></i>';
+            }
+        };
+
+        window.closeModal = function () {
+            const container = document.getElementById('modal-container');
+            container.classList.add('hidden');
+        };
+
+        window.showToast = function (message, type = 'success') {
+            const toast = document.createElement('div');
+            const icon = type === 'error' ? 'fa-triangle-exclamation text-rose-400' : 'fa-circle-check text-emerald-400';
+
+            toast.className = `fixed top-6 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white px-6 py-3 rounded-full shadow-xl z-[70] flex items-center gap-3 transition-all duration-300 opacity-0 translate-y-[-20px]`;
+            toast.innerHTML = `<i class="fa-solid ${icon}"></i> <span class="font-medium text-sm">${message}</span>`;
+
+            document.body.appendChild(toast);
+
+            // Animate In
+            requestAnimationFrame(() => {
+                toast.classList.remove('opacity-0', 'translate-y-[-20px]');
+            });
+
+            // Remove after 3s
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-[-20px]');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        };
+
+        // Tab Switching Logic for Schedule
+        document.addEventListener('click', (e) => {
+            if (e.target.id === 'tab-day1') {
+                document.getElementById('day1-list').classList.remove('hidden');
+                document.getElementById('day2-list').classList.add('hidden');
+                e.target.classList.add('bg-white', 'text-slate-800', 'shadow-sm');
+                e.target.classList.remove('text-slate-500', 'hover:bg-slate-50/50');
+
+                const other = document.getElementById('tab-day2');
+                other.classList.remove('bg-white', 'text-slate-800', 'shadow-sm');
+                other.classList.add('text-slate-500', 'hover:bg-slate-50/50');
+            }
+            if (e.target.id === 'tab-day2') {
+                document.getElementById('day2-list').classList.remove('hidden');
+                document.getElementById('day1-list').classList.add('hidden');
+                e.target.classList.add('bg-white', 'text-slate-800', 'shadow-sm');
+                e.target.classList.remove('text-slate-500', 'hover:bg-slate-50/50');
+
+                const other = document.getElementById('tab-day1');
+                other.classList.remove('bg-white', 'text-slate-800', 'shadow-sm');
+                other.classList.add('text-slate-500', 'hover:bg-slate-50/50');
+            }
+        });
+
+        // Schedule Logic
+        function initSchedule() {
+            const tabsContainer = document.getElementById('schedule-tabs');
+            const listContainer = document.getElementById('schedule-list');
+
+            if (!tabsContainer) return;
+
+            // Get unique days
+            const days = [...new Set(DATA.schedule.map(s => s.day))].sort((a, b) => a - b);
+
+            // Render Tabs
+            tabsContainer.innerHTML = days.map(d => {
+                // Formatting Date: Day 0 -> 2/4 (Tue)
+                // Base date: 2025-02-04
+                const dateObj = new Date(2025, 1, 4 + d); // Feb is month 1
+                const dateStr = `${dateObj.getMonth() + 1}/${dateObj.getDate()}`;
+                const weekStr = dateObj.toLocaleDateString('zh-TW', { weekday: 'short' });
+
+                return `
+                <button onclick="renderScheduleList(${d})" id="tab-btn-${d}" class="flex-none snap-start px-4 py-2 rounded-lg border border-slate-100 bg-white shadow-sm text-sm font-medium text-slate-500 hover:bg-ocean-50 hover:text-ocean-600 transition-all focus:outline-none focus:ring-2 focus:ring-ocean-500 whitespace-nowrap">
+                    <span class="block text-[10px] uppercase tracking-wider font-bold mb-0.5">Day ${d}</span>
+                    <span class="font-bold text-lg">${dateStr}</span> <span class="text-xs opacity-75">(${weekStr})</span>
+                </button>
+                `;
+            }).join('');
+
+            // Select first day or current active
+            if (days.length > 0) renderScheduleList(days[0]);
+        }
+
+        function renderScheduleList(day) {
+            const listContainer = document.getElementById('schedule-list');
+            const items = DATA.schedule.filter(s => s.day === day);
+
+            // Update Tab Styles
+            document.querySelectorAll('#schedule-tabs button').forEach(btn => {
+                if (btn.id === `tab-btn-${day}`) {
+                    btn.classList.add('border-ocean-200', 'bg-ocean-50', 'text-ocean-700', 'ring-1', 'ring-ocean-200');
+                    btn.classList.remove('border-slate-100', 'bg-white', 'text-slate-500');
+                    // Scroll to view
+                    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                } else {
+                    btn.classList.remove('border-ocean-200', 'bg-ocean-50', 'text-ocean-700', 'ring-1', 'ring-ocean-200');
+                    btn.classList.add('border-slate-100', 'bg-white', 'text-slate-500');
+                }
+            });
+
+            if (items.length === 0) {
+                listContainer.innerHTML = `<div class="p-8 text-center text-slate-400">本日無行程</div>`;
+                return;
+            }
+
+            listContainer.innerHTML = items.map(renderTimelineItem).join('');
+
+            // Add Fade In effect
+            listContainer.classList.remove('fade-in');
+            void listContainer.offsetWidth; // trigger reflow
+            listContainer.classList.add('fade-in');
+        }
+
+        // Initialize App
+        checkLogin();
+        router.navigate('dashboard');
+
+    </script>
+</body>
+
+</html>
