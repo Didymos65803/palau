@@ -207,85 +207,938 @@
                 guide: "導覽組", telescope: "儀器組", story: "故事組", support: "機動組", admin: "管理員"
             },
             schedule: [
-                // Day 0: Feb 4 (Tue)
-                { id: 401, day: 0, date: "2/4", time: "13:30", endTime: "16:00", title: "桃園機場集合/登機", location: "TPE 第2航廈", type: "logistics", pic: "Alice", notes: "CI028 航班, 13:30 起飛" },
-                { id: 402, day: 0, date: "2/4", time: "18:30", endTime: "19:30", title: "抵達帛琉/通關", location: "ROR 機場", type: "logistics", pic: "Guide Ken", notes: "當地導遊接機" },
-                { id: 403, day: 0, date: "2/4", time: "20:00", endTime: "21:30", title: "迎賓晚餐", location: "飯店餐廳", type: "food", pic: "Bob", notes: "分配房間" },
 
-                // Day 1: Feb 5 (Wed)
-                { id: 101, day: 1, date: "2/5", time: "07:30", endTime: "08:30", title: "自助早餐", location: "飯店大廳", type: "logistics", pic: "Alice", notes: "確認素食名單" },
-                { id: 102, day: 1, date: "2/5", time: "09:00", endTime: "12:00", title: "珊瑚礁生態導覽", location: "Ebiil 學會", type: "activity", pic: "Dr. Roberts", notes: "攜帶浮潛裝備" },
-                { id: 103, day: 1, date: "2/5", time: "12:00", endTime: "13:30", title: "午餐", location: "碼頭餐廳", type: "food", pic: "Bob", notes: "預訂合菜" },
-                { id: 104, day: 1, date: "2/5", time: "14:00", endTime: "16:00", title: "紅樹林獨木舟", location: "Ngardmau", type: "activity", pic: "Guide Ken", notes: "檢查防曬" },
 
-                // Day 1 Evening - Role Based
-                // 17:50 - 18:30 Setup
-                { id: 1051, day: 1, date: "2/5", time: "17:50", endTime: "18:30", title: "確認動線", location: "觀測點", type: "work", role: "guide", pic: "涂宇軒", notes: "測試擴音器/麥克風" },
-                { id: 1052, day: 1, date: "2/5", time: "17:50", endTime: "18:30", title: "器材定位", location: "觀測點", type: "work", role: "telescope", pic: "李曜成", notes: "架設赤道儀/腳架/除霧帶" },
-                { id: 1053, day: 1, date: "2/5", time: "17:50", endTime: "18:30", title: "故事館開張", location: "觀測點", type: "work", role: "story", pic: "陳柏翰", notes: "佈置燈光/海報/縮時" },
-                { id: 1054, day: 1, date: "2/5", time: "17:50", endTime: "18:30", title: "場地安全", location: "觀測點", type: "work", role: "support", pic: "謝承安", notes: "搬運重物/安裝警示燈" },
+                // Day 1: Feb 5 (Wed) - 出發
+                // 07:30 桃園機場集合
+                { id: 101, day: 1, date: "2/5", time: "07:30", endTime: "08:30", title: "桃園機場集合", location: "第1航廈出境大廳", type: "logistics", pic: "All", notes: "" },
+                { id: 1011, day: 1, date: "2/5", time: "07:30", endTime: "08:30", title: "集合", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 1012, day: 1, date: "2/5", time: "07:30", endTime: "08:30", title: "集合", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 1013, day: 1, date: "2/5", time: "07:30", endTime: "08:30", title: "集合", person: "謝承安", type: "personal", notes: "" },
+                { id: 1014, day: 1, date: "2/5", time: "07:30", endTime: "08:30", title: "集合", person: "李曜成", type: "personal", notes: "" },
+                { id: 1015, day: 1, date: "2/5", time: "07:30", endTime: "08:30", title: "集合", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 1016, day: 1, date: "2/5", time: "07:30", endTime: "08:30", title: "集合", person: "陳子彬", type: "personal", notes: "" },
+                { id: 1017, day: 1, date: "2/5", time: "07:30", endTime: "08:30", title: "集合", person: "許孟凱", type: "personal", notes: "" },
+                { id: 1018, day: 1, date: "2/5", time: "07:30", endTime: "08:30", title: "集合", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 1019, day: 1, date: "2/5", time: "07:30", endTime: "08:30", title: "集合", person: "許翌倫", type: "personal", notes: "" },
 
-                // 18:30 - 19:00 Testing
-                { id: 1061, day: 1, date: "2/5", time: "18:30", endTime: "19:00", title: "最後彩排", location: "觀測點", type: "work", role: "guide", pic: "蔡沂恩", notes: "適應黑暗/指星筆確認" },
-                { id: 1062, day: 1, date: "2/5", time: "18:30", endTime: "19:00", title: "目標校準", location: "觀測點", type: "work", role: "telescope", pic: "許翌倫", notes: "對焦測試/Seestar預拍" },
-                { id: 1063, day: 1, date: "2/5", time: "18:30", endTime: "19:00", title: "全體試拍", location: "觀測點", type: "work", role: "story", pic: "陳子彬", notes: "ISO設定/工作照" },
-                { id: 1064, day: 1, date: "2/5", time: "18:30", endTime: "19:00", title: "人員引導", location: "入口", type: "work", role: "support", pic: "許孟凱", notes: "引導學生/手電筒管制" },
+                // 07:30 行李、證件確認
+                { id: 102, day: 1, date: "2/5", time: "07:30", endTime: "08:30", title: "行李、證件確認", location: "第1航廈出境大廳", type: "logistics", pic: "All", notes: "" },
+                { id: 1021, day: 1, date: "2/5", time: "07:30", endTime: "08:30", title: "報到", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 1022, day: 1, date: "2/5", time: "07:30", endTime: "08:30", title: "報到", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 1023, day: 1, date: "2/5", time: "07:30", endTime: "08:30", title: "報到", person: "謝承安", type: "personal", notes: "" },
+                { id: 1024, day: 1, date: "2/5", time: "07:30", endTime: "08:30", title: "報到", person: "李曜成", type: "personal", notes: "" },
+                { id: 1025, day: 1, date: "2/5", time: "07:30", endTime: "08:30", title: "報到", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 1026, day: 1, date: "2/5", time: "07:30", endTime: "08:30", title: "報到", person: "陳子彬", type: "personal", notes: "" },
+                { id: 1027, day: 1, date: "2/5", time: "07:30", endTime: "08:30", title: "報到", person: "許孟凱", type: "personal", notes: "" },
+                { id: 1028, day: 1, date: "2/5", time: "07:30", endTime: "08:30", title: "報到", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 1029, day: 1, date: "2/5", time: "07:30", endTime: "08:30", title: "報到", person: "許翌倫", type: "personal", notes: "" },
 
-                // 19:00 - 19:10 Opening
-                { id: 1070, day: 1, date: "2/5", time: "19:00", endTime: "19:10", title: "觀測活動開場", location: "觀測點", type: "activity", role: "all", pic: "Host", notes: "規則說明" },
+                // 08:30 check in
+                { id: 103, day: 1, date: "2/5", time: "08:30", endTime: "09:00", title: "Check in", location: "第1航廈出境大廳", type: "logistics", pic: "All", notes: "" },
+                { id: 1031, day: 1, date: "2/5", time: "08:30", endTime: "09:00", title: "報到", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 1032, day: 1, date: "2/5", time: "08:30", endTime: "09:00", title: "報到", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 1033, day: 1, date: "2/5", time: "08:30", endTime: "09:00", title: "報到", person: "謝承安", type: "personal", notes: "" },
+                { id: 1034, day: 1, date: "2/5", time: "08:30", endTime: "09:00", title: "報到", person: "李曜成", type: "personal", notes: "" },
+                { id: 1035, day: 1, date: "2/5", time: "08:30", endTime: "09:00", title: "報到", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 1036, day: 1, date: "2/5", time: "08:30", endTime: "09:00", title: "報到", person: "陳子彬", type: "personal", notes: "" },
+                { id: 1037, day: 1, date: "2/5", time: "08:30", endTime: "09:00", title: "報到", person: "許孟凱", type: "personal", notes: "" },
+                { id: 1038, day: 1, date: "2/5", time: "08:30", endTime: "09:00", title: "報到", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 1039, day: 1, date: "2/5", time: "08:30", endTime: "09:00", title: "報到", person: "許翌倫", type: "personal", notes: "" },
 
-                // 19:10 - 19:30 Guide S1
-                { id: 1071, day: 1, date: "2/5", time: "19:10", endTime: "19:30", title: "主講：西洋星座", location: "觀測點", type: "activity", role: "guide", pic: "涂宇軒", notes: "方位辨識" },
-                { id: 1072, day: 1, date: "2/5", time: "19:10", endTime: "19:30", title: "配合導覽指向", location: "觀測點", type: "work", role: "telescope", pic: "李曜成", notes: "亮星/行星" },
-                { id: 1073, day: 1, date: "2/5", time: "19:10", endTime: "19:30", title: "合影紀錄", location: "觀測點", type: "work", role: "story", pic: "陳柏翰", notes: "與星空合影" },
-                { id: 1074, day: 1, date: "2/5", time: "19:10", endTime: "19:30", title: "安全巡視", location: "周邊", type: "work", role: "support", pic: "謝承安", notes: "外來干擾/學生安全" },
+                // 09:45 購買伴手禮
+                { id: 104, day: 1, date: "2/5", time: "09:45", endTime: "14:45", title: "購買伴手禮", location: "第一航廈", type: "logistics", pic: "All", notes: "校長跟老師紀念品" },
+                { id: 1041, day: 1, date: "2/5", time: "09:45", endTime: "14:45", title: "逛街", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 1042, day: 1, date: "2/5", time: "09:45", endTime: "14:45", title: "逛街", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 1043, day: 1, date: "2/5", time: "09:45", endTime: "14:45", title: "逛街", person: "謝承安", type: "personal", notes: "" },
+                { id: 1044, day: 1, date: "2/5", time: "09:45", endTime: "14:45", title: "逛街", person: "李曜成", type: "personal", notes: "" },
+                { id: 1045, day: 1, date: "2/5", time: "09:45", endTime: "14:45", title: "逛街", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 1046, day: 1, date: "2/5", time: "09:45", endTime: "14:45", title: "逛街", person: "陳子彬", type: "personal", notes: "" },
+                { id: 1047, day: 1, date: "2/5", time: "09:45", endTime: "14:45", title: "逛街", person: "許孟凱", type: "personal", notes: "" },
+                { id: 1048, day: 1, date: "2/5", time: "09:45", endTime: "14:45", title: "逛街", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 1049, day: 1, date: "2/5", time: "09:45", endTime: "14:45", title: "逛街", person: "許翌倫", type: "personal", notes: "記得上飛機" },
 
-                // 19:30 - 19:50 Free Time
-                { id: 1080, day: 1, date: "2/5", time: "19:30", endTime: "19:50", title: "自由觀測 A", location: "觀測點", type: "activity", role: "all", pic: "All", notes: "分組交流" },
-                { id: 1082, day: 1, date: "2/5", time: "19:30", endTime: "19:50", title: "儀器操作解說", location: "望遠鏡區", type: "work", role: "telescope", pic: "陳欣鈺", notes: "月球/土星/木星" },
-                { id: 1083, day: 1, date: "2/5", time: "19:30", endTime: "19:50", title: "故事收集/簽名", location: "故事館", type: "work", role: "story", pic: "陳子彬", notes: "主動搭話/發明信片" },
-                { id: 1084, day: 1, date: "2/5", time: "19:30", endTime: "19:50", title: "人流管控", location: "望遠鏡區", type: "work", role: "support", pic: "許孟凱", notes: "排隊動線/器材防撞" },
+                // 14:45 離開機場
+                { id: 105, day: 1, date: "2/5", time: "14:45", endTime: "15:45", title: "離開機場", location: "on the plane", type: "logistics", pic: "All", notes: "" },
 
-                // 19:50 - 20:10 Guide S2
-                { id: 1091, day: 1, date: "2/5", time: "19:50", endTime: "20:10", title: "主講：深空天體", location: "觀測點", type: "activity", role: "guide", pic: "蔡沂恩", notes: "神話故事" },
-                { id: 1092, day: 1, date: "2/5", time: "19:50", endTime: "20:10", title: "目標切換", location: "觀測點", type: "work", role: "telescope", pic: "許翌倫", notes: "M42, M45" },
-                { id: 1094, day: 1, date: "2/5", time: "19:50", endTime: "20:10", title: "秩序維護", location: "後方", type: "work", role: "support", pic: "謝承安", notes: "聚集人群/安靜" },
+                // 14:45 下機
+                { id: 106, day: 1, date: "2/5", time: "14:45", endTime: "15:45", title: "下機", location: "", type: "logistics", pic: "All", notes: "" },
+                { id: 1061, day: 1, date: "2/5", time: "14:45", endTime: "15:45", title: "talk with Noel", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 1062, day: 1, date: "2/5", time: "14:45", endTime: "15:45", title: "使館洽談", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 1063, day: 1, date: "2/5", time: "14:45", endTime: "15:45", title: "點儀器", person: "謝承安", type: "personal", notes: "" },
+                { id: 1064, day: 1, date: "2/5", time: "14:45", endTime: "15:45", title: "點儀器", person: "李曜成", type: "personal", notes: "" },
+                { id: 1065, day: 1, date: "2/5", time: "14:45", endTime: "15:45", title: "點生活", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 1066, day: 1, date: "2/5", time: "14:45", endTime: "15:45", title: "點生活", person: "陳子彬", type: "personal", notes: "" },
+                { id: 1067, day: 1, date: "2/5", time: "14:45", endTime: "15:45", title: "taxi (三台)", person: "許孟凱", type: "personal", notes: "" },
+                { id: 1068, day: 1, date: "2/5", time: "14:45", endTime: "15:45", title: "taxi", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 1069, day: 1, date: "2/5", time: "14:45", endTime: "15:45", title: "準備帶的儀器", person: "許翌倫", type: "personal", notes: "點儀器" },
 
-                // 20:10 - 20:40 Free Time B
-                { id: 1100, day: 1, date: "2/5", time: "20:10", endTime: "20:40", title: "自由觀測 B", location: "觀測點", type: "activity", role: "all", pic: "All", notes: "進階觀測" },
+                // 15:45 前往馬堤海洋之星
+                { id: 107, day: 1, date: "2/5", time: "15:45", endTime: "16:30", title: "前往海洋之星", location: "海洋之星飯店", type: "logistics", pic: "All", notes: "checkin" },
+                { id: 1071, day: 1, date: "2/5", time: "15:45", endTime: "16:30", title: "checkin", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 1072, day: 1, date: "2/5", time: "15:45", endTime: "16:30", title: "準備帶的教材", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 1073, day: 1, date: "2/5", time: "15:45", endTime: "16:30", title: "準備帶的儀器", person: "謝承安", type: "personal", notes: "" },
+                { id: 1074, day: 1, date: "2/5", time: "15:45", endTime: "16:30", title: "上儀器", person: "李曜成", type: "personal", notes: "" },
+                { id: 1075, day: 1, date: "2/5", time: "15:45", endTime: "16:30", title: "走路勘查當地形", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 1076, day: 1, date: "2/5", time: "15:45", endTime: "16:30", title: "拿行李", person: "陳子彬", type: "personal", notes: "" },
+                { id: 1077, day: 1, date: "2/5", time: "15:45", endTime: "16:30", title: "走路勘查當地形", person: "許孟凱", type: "personal", notes: "" },
+                { id: 1078, day: 1, date: "2/5", time: "15:45", endTime: "16:30", title: "上教材", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 1079, day: 1, date: "2/5", time: "15:45", endTime: "16:30", title: "上儀器", person: "許翌倫", type: "personal", notes: "" },
 
-                // 20:40 - 21:00 Cleanup
-                { id: 1111, day: 1, date: "2/5", time: "20:40", endTime: "21:00", title: "送客/撤收", location: "觀測點", type: "work", role: "guide", pic: "All", notes: "感謝參與" },
-                { id: 1112, day: 1, date: "2/5", time: "20:40", endTime: "21:00", title: "精密撤收", location: "器材區", type: "work", role: "telescope", pic: "李曜成", notes: "歸零/鏡頭蓋/配件點收" },
-                { id: 1113, day: 1, date: "2/5", time: "20:40", endTime: "21:00", title: "影像備份", location: "故事館", type: "work", role: "story", pic: "陳柏翰", notes: "收納記憶卡" },
-                { id: 1114, day: 1, date: "2/5", time: "20:40", endTime: "21:00", title: "場地復原", location: "全場", type: "work", role: "support", pic: "謝承安", notes: "垃圾巡檢/回收警示燈" },
+                // 16:30 前往馬塔高中
+                { id: 108, day: 1, date: "2/5", time: "16:30", endTime: "17:00", title: "前往帛琉高中", location: "飯店->高中", type: "logistics", pic: "All", notes: "talk with Noel" },
+                { id: 1081, day: 1, date: "2/5", time: "16:30", endTime: "17:00", title: "上教材", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 1082, day: 1, date: "2/5", time: "16:30", endTime: "17:00", title: "上教材", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 1083, day: 1, date: "2/5", time: "16:30", endTime: "17:00", title: "上儀器", person: "謝承安", type: "personal", notes: "" },
+                { id: 1084, day: 1, date: "2/5", time: "16:30", endTime: "17:00", title: "上儀器", person: "李曜成", type: "personal", notes: "" },
+                { id: 1085, day: 1, date: "2/5", time: "16:30", endTime: "17:00", title: "上儀器", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 1086, day: 1, date: "2/5", time: "16:30", endTime: "17:00", title: "上儀器", person: "陳子彬", type: "personal", notes: "" },
+                { id: 1087, day: 1, date: "2/5", time: "16:30", endTime: "17:00", title: "上儀器", person: "許孟凱", type: "personal", notes: "" },
+                { id: 1088, day: 1, date: "2/5", time: "16:30", endTime: "17:00", title: "上教材", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 1089, day: 1, date: "2/5", time: "16:30", endTime: "17:00", title: "上儀器", person: "許翌倫", type: "personal", notes: "" },
 
-                // Day 2: Feb 6 (Thu)
-                { id: 201, day: 2, date: "2/6", time: "08:00", endTime: "09:00", title: "早餐", location: "飯店大廳", type: "logistics", pic: "Alice", notes: "" },
-                { id: 202, day: 2, date: "2/6", time: "09:30", endTime: "11:30", title: "水母湖健行", location: "Eil Malk", type: "activity", pic: "Guide Sarah", notes: "需要許可證" },
-                { id: 203, day: 2, date: "2/6", time: "12:00", endTime: "13:30", title: "無人島午餐", location: "Rock Islands", type: "food", pic: "Bob", notes: "Bento Box" },
-                { id: 204, day: 2, date: "2/6", time: "14:00", endTime: "16:00", title: "牛奶湖 SPA", location: "Milky Way", type: "activity", pic: "Guide Ken", notes: "全身泥浴體驗" },
+                // 17:00 馬塔高中4tour
+                { id: 109, day: 1, date: "2/5", time: "17:00", endTime: "18:00", title: "帛琉高中 tour", location: "馬塔高中", type: "activity", pic: "All", notes: "1hr" },
+                { id: 1091, day: 1, date: "2/5", time: "17:00", endTime: "18:00", title: "教室-儲藏-夜觀", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 1092, day: 1, date: "2/5", time: "17:00", endTime: "18:00", title: "教室-儲藏-夜觀", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 1093, day: 1, date: "2/5", time: "17:00", endTime: "18:00", title: "教室-儲藏-夜觀", person: "謝承安", type: "personal", notes: "" },
+                { id: 1094, day: 1, date: "2/5", time: "17:00", endTime: "18:00", title: "教室-儲藏-夜觀", person: "李曜成", type: "personal", notes: "" },
+                { id: 1095, day: 1, date: "2/5", time: "17:00", endTime: "18:00", title: "教室-儲藏-夜觀", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 1096, day: 1, date: "2/5", time: "17:00", endTime: "18:00", title: "教室-儲藏-夜觀", person: "陳子彬", type: "personal", notes: "" },
+                { id: 1097, day: 1, date: "2/5", time: "17:00", endTime: "18:00", title: "教室-儲藏-夜觀", person: "許孟凱", type: "personal", notes: "" },
+                { id: 1098, day: 1, date: "2/5", time: "17:00", endTime: "18:00", title: "教室-儲藏-夜觀", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 1099, day: 1, date: "2/5", time: "17:00", endTime: "18:00", title: "教室-儲藏-夜觀", person: "許翌倫", type: "personal", notes: "" },
 
-                // Day 3: Feb 7 (Fri)
-                { id: 301, day: 3, date: "2/7", time: "09:00", endTime: "16:00", title: "PCC 參訪交流", location: "Palau Comm. College", type: "activity", pic: "Principal", notes: "著正式服裝" },
+                // 18:00 吃飯
+                { id: 110, day: 1, date: "2/5", time: "18:00", endTime: "20:00", title: "吃飯", location: "Yokohama restaurant", type: "food", pic: "All", notes: "" },
+                { id: 1101, day: 1, date: "2/5", time: "18:00", endTime: "20:00", title: "吃飯", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 1102, day: 1, date: "2/5", time: "18:00", endTime: "20:00", title: "吃飯", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 1103, day: 1, date: "2/5", time: "18:00", endTime: "20:00", title: "錄影", person: "謝承安", type: "personal", notes: "" },
+                { id: 1104, day: 1, date: "2/5", time: "18:00", endTime: "20:00", title: "吃飯", person: "李曜成", type: "personal", notes: "" },
+                { id: 1105, day: 1, date: "2/5", time: "18:00", endTime: "20:00", title: "吃飯", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 1106, day: 1, date: "2/5", time: "18:00", endTime: "20:00", title: "吃飯", person: "陳子彬", type: "personal", notes: "" },
+                { id: 1107, day: 1, date: "2/5", time: "18:00", endTime: "20:00", title: "吃飯", person: "許孟凱", type: "personal", notes: "" },
+                { id: 1108, day: 1, date: "2/5", time: "18:00", endTime: "20:00", title: "吃飯", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 1109, day: 1, date: "2/5", time: "18:00", endTime: "20:00", title: "吃飯", person: "許翌倫", type: "personal", notes: "" },
 
-                // Day 4: Feb 8 (Sat)
-                { id: 401, day: 4, date: "2/8", time: "09:00", endTime: "12:00", title: "大斷層浮潛", location: "Big Drop-off", type: "activity", pic: "Guide Sarah", notes: "注意海流" },
-                { id: 402, day: 4, date: "2/8", time: "14:00", endTime: "17:00", title: "鯊魚城", location: "Shark City", type: "activity", pic: "Guide Ken", notes: "" },
+                // 20:00 走路回飯店
+                { id: 111, day: 1, date: "2/5", time: "20:00", endTime: "20:30", title: "走路回飯店", location: "走路", type: "logistics", pic: "All", notes: "" },
+                { id: 1111, day: 1, date: "2/5", time: "20:00", endTime: "20:30", title: "走路", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 1112, day: 1, date: "2/5", time: "20:00", endTime: "20:30", title: "走路", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 1113, day: 1, date: "2/5", time: "20:00", endTime: "20:30", title: "走路", person: "謝承安", type: "personal", notes: "" },
+                { id: 1114, day: 1, date: "2/5", time: "20:00", endTime: "20:30", title: "走路", person: "李曜成", type: "personal", notes: "" },
+                { id: 1115, day: 1, date: "2/5", time: "20:00", endTime: "20:30", title: "走路", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 1116, day: 1, date: "2/5", time: "20:00", endTime: "20:30", title: "走路", person: "陳子彬", type: "personal", notes: "" },
+                { id: 1117, day: 1, date: "2/5", time: "20:00", endTime: "20:30", title: "走路", person: "許孟凱", type: "personal", notes: "" },
+                { id: 1118, day: 1, date: "2/5", time: "20:00", endTime: "20:30", title: "走路", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 1119, day: 1, date: "2/5", time: "20:00", endTime: "20:30", title: "走路", person: "許翌倫", type: "personal", notes: "" },
 
-                // Day 5: Feb 9 (Sun)
-                { id: 501, day: 5, date: "2/9", time: "10:00", endTime: "14:00", title: "KB 大橋公園", location: "KB Bridge", type: "activity", pic: "Alice", notes: "自由活動/野餐" },
+                // 20:30 隔日活動預演/小檢
+                { id: 112, day: 1, date: "2/5", time: "20:30", endTime: "22:00", title: "隔日活動預演/小檢", location: "", type: "activity", pic: "All", notes: "" },
+                { id: 1121, day: 1, date: "2/5", time: "20:30", endTime: "22:00", title: "", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 1122, day: 1, date: "2/5", time: "20:30", endTime: "22:00", title: "", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 1123, day: 1, date: "2/5", time: "20:30", endTime: "22:00", title: "", person: "謝承安", type: "personal", notes: "" },
+                { id: 1124, day: 1, date: "2/5", time: "20:30", endTime: "22:00", title: "", person: "李曜成", type: "personal", notes: "" },
+                { id: 1125, day: 1, date: "2/5", time: "20:30", endTime: "22:00", title: "", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 1126, day: 1, date: "2/5", time: "20:30", endTime: "22:00", title: "", person: "陳子彬", type: "personal", notes: "" },
+                { id: 1127, day: 1, date: "2/5", time: "20:30", endTime: "22:00", title: "", person: "許孟凱", type: "personal", notes: "" },
+                { id: 1128, day: 1, date: "2/5", time: "20:30", endTime: "22:00", title: "", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 1129, day: 1, date: "2/5", time: "20:30", endTime: "22:00", title: "", person: "許翌倫", type: "personal", notes: "" },
 
-                // Day 6: Feb 10 (Mon)
-                { id: 601, day: 6, date: "2/10", time: "09:00", endTime: "15:00", title: "北島瀑布健行", location: "Ngardmau Falls", type: "activity", pic: "Guide Ken", notes: "需步行 40 分鐘" },
 
-                // Day 7: Feb 11 (Tue)
-                { id: 701, day: 7, date: "2/11", time: "09:00", endTime: "11:00", title: "國家博物館", location: "National Museum", type: "activity", pic: "Dr. Roberts", notes: "歷史講座" },
-                { id: 702, day: 7, date: "2/11", time: "18:00", endTime: "21:00", title: "惜別晚宴", location: "飯店宴會廳", type: "food", pic: "All Staff", notes: "頒發證書" },
 
-                // Day 8: Feb 12 (Wed)
-                { id: 801, day: 8, date: "2/12", time: "10:00", endTime: "11:00", title: "退房/前往機場", location: "飯店大廳", type: "logistics", pic: "Alice", notes: "檢查護照" },
-                { id: 802, day: 8, date: "2/12", time: "13:00", endTime: "18:00", title: "返抵國門", location: "TPE", type: "logistics", pic: "Alice", notes: "解散" }
+                // Day 2: Feb 6 (Thu) - 帛琉參訪
+                // 06:30 起床 / Morning Call
+                { id: 201, day: 2, date: "2/6", time: "06:30", endTime: "07:00", title: "Morning Call", location: "飯店", type: "logistics", pic: "涂宇軒, 許孟凱", notes: "涂宇軒, 許孟凱負責叫人" },
+                { id: 2011, day: 2, date: "2/6", time: "06:30", endTime: "07:00", title: "被查房", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 2012, day: 2, date: "2/6", time: "06:30", endTime: "07:00", title: "Morning call", person: "涂宇軒", type: "personal", notes: "負責叫人" },
+                { id: 2013, day: 2, date: "2/6", time: "06:30", endTime: "07:00", title: "被查房", person: "謝承安", type: "personal", notes: "" },
+                { id: 2014, day: 2, date: "2/6", time: "06:30", endTime: "07:00", title: "被查房", person: "李曜成", type: "personal", notes: "" },
+                { id: 2015, day: 2, date: "2/6", time: "06:30", endTime: "07:00", title: "被查房", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 2016, day: 2, date: "2/6", time: "06:30", endTime: "07:00", title: "被查房", person: "陳子彬", type: "personal", notes: "" },
+                { id: 2017, day: 2, date: "2/6", time: "06:30", endTime: "07:00", title: "Morning call", person: "許孟凱", type: "personal", notes: "負責叫人" },
+                { id: 2018, day: 2, date: "2/6", time: "06:30", endTime: "07:00", title: "被查房", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 2019, day: 2, date: "2/6", time: "06:30", endTime: "07:00", title: "被查房", person: "許翌倫", type: "personal", notes: "" },
+
+                // 07:00 起床吃飯
+                { id: 202, day: 2, date: "2/6", time: "07:00", endTime: "07:15", title: "起床吃飯", location: "飯店", type: "food", pic: "All", notes: "" },
+                { id: 2021, day: 2, date: "2/6", time: "07:00", endTime: "07:15", title: "早餐", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 2022, day: 2, date: "2/6", time: "07:00", endTime: "07:15", title: "早餐", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 2023, day: 2, date: "2/6", time: "07:00", endTime: "07:15", title: "早餐", person: "謝承安", type: "personal", notes: "" },
+                { id: 2024, day: 2, date: "2/6", time: "07:00", endTime: "07:15", title: "早餐", person: "李曜成", type: "personal", notes: "" },
+                { id: 2025, day: 2, date: "2/6", time: "07:00", endTime: "07:15", title: "早餐", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 2026, day: 2, date: "2/6", time: "07:00", endTime: "07:15", title: "早餐", person: "陳子彬", type: "personal", notes: "" },
+                { id: 2027, day: 2, date: "2/6", time: "07:00", endTime: "07:15", title: "早餐", person: "許孟凱", type: "personal", notes: "" },
+                { id: 2028, day: 2, date: "2/6", time: "07:00", endTime: "07:15", title: "早餐", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 2029, day: 2, date: "2/6", time: "07:00", endTime: "07:15", title: "早餐", person: "許翌倫", type: "personal", notes: "" },
+
+                // 07:15 前往帛琉高中
+                { id: 203, day: 2, date: "2/6", time: "07:15", endTime: "07:30", title: "前往帛琉高中", location: "移動中", type: "logistics", pic: "All", notes: "搭乘計程車 (Taxi * 3)" },
+                { id: 2031, day: 2, date: "2/6", time: "07:15", endTime: "07:30", title: "搭乘計程車", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 2032, day: 2, date: "2/6", time: "07:15", endTime: "07:30", title: "搭乘計程車", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 2033, day: 2, date: "2/6", time: "07:15", endTime: "07:30", title: "搭乘計程車", person: "謝承安", type: "personal", notes: "" },
+                { id: 2034, day: 2, date: "2/6", time: "07:15", endTime: "07:30", title: "搭乘計程車", person: "李曜成", type: "personal", notes: "" },
+                { id: 2035, day: 2, date: "2/6", time: "07:15", endTime: "07:30", title: "搭乘計程車", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 2036, day: 2, date: "2/6", time: "07:15", endTime: "07:30", title: "搭乘計程車", person: "陳子彬", type: "personal", notes: "" },
+                { id: 2037, day: 2, date: "2/6", time: "07:15", endTime: "07:30", title: "搭乘計程車", person: "許孟凱", type: "personal", notes: "" },
+                { id: 2038, day: 2, date: "2/6", time: "07:15", endTime: "07:30", title: "搭乘計程車", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 2039, day: 2, date: "2/6", time: "07:15", endTime: "07:30", title: "搭乘計程車", person: "許翌倫", type: "personal", notes: "" },
+
+                // 07:35 見校長
+                { id: 204, day: 2, date: "2/6", time: "07:35", endTime: "07:50", title: "見校長", location: "校長室", type: "activity", pic: "All", notes: "" },
+                { id: 2041, day: 2, date: "2/6", time: "07:35", endTime: "07:50", title: "見校長", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 2042, day: 2, date: "2/6", time: "07:35", endTime: "07:50", title: "見校長", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 2043, day: 2, date: "2/6", time: "07:35", endTime: "07:50", title: "見校長", person: "謝承安", type: "personal", notes: "" },
+                { id: 2044, day: 2, date: "2/6", time: "07:35", endTime: "07:50", title: "見校長", person: "李曜成", type: "personal", notes: "" },
+                { id: 2045, day: 2, date: "2/6", time: "07:35", endTime: "07:50", title: "見校長", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 2046, day: 2, date: "2/6", time: "07:35", endTime: "07:50", title: "見校長", person: "陳子彬", type: "personal", notes: "" },
+                { id: 2047, day: 2, date: "2/6", time: "07:35", endTime: "07:50", title: "見校長", person: "許孟凱", type: "personal", notes: "" },
+                { id: 2048, day: 2, date: "2/6", time: "07:35", endTime: "07:50", title: "見校長", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 2049, day: 2, date: "2/6", time: "07:35", endTime: "07:50", title: "見校長", person: "許翌倫", type: "personal", notes: "" },
+
+                // 07:50 課程準備/就位
+                { id: 205, day: 2, date: "2/6", time: "07:50", endTime: "08:00", title: "課程準備", location: "帛琉教室", type: "activity", pic: "All", notes: "" },
+                { id: 2051, day: 2, date: "2/6", time: "07:50", endTime: "08:00", title: "隊輔", person: "陳柏翰", type: "personal", notes: "協助準備" },
+                { id: 2052, day: 2, date: "2/6", time: "07:50", endTime: "08:00", title: "隊輔", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 2053, day: 2, date: "2/6", time: "07:50", endTime: "08:00", title: "錄影準備", person: "謝承安", type: "personal", notes: "" },
+                { id: 2054, day: 2, date: "2/6", time: "07:50", endTime: "08:00", title: "隊輔", person: "李曜成", type: "personal", notes: "" },
+                { id: 2055, day: 2, date: "2/6", time: "07:50", endTime: "08:00", title: "拍照", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 2056, day: 2, date: "2/6", time: "07:50", endTime: "08:00", title: "隊輔", person: "陳子彬", type: "personal", notes: "" },
+                { id: 2057, day: 2, date: "2/6", time: "07:50", endTime: "08:00", title: "隊輔", person: "許孟凱", type: "personal", notes: "" },
+                { id: 2058, day: 2, date: "2/6", time: "07:50", endTime: "08:00", title: "課程準備", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 2059, day: 2, date: "2/6", time: "07:50", endTime: "08:00", title: "課程準備", person: "許翌倫", type: "personal", notes: "" },
+
+                // 08:00 Period 1 (天文課程)
+                { id: 206, day: 2, date: "2/6", time: "08:00", endTime: "09:30", title: "Period 1 (天文課程)", location: "帛琉教室", type: "activity", pic: "蔡沂恩, 許翌倫", notes: "" },
+                { id: 2061, day: 2, date: "2/6", time: "08:00", endTime: "09:30", title: "隊輔", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 2062, day: 2, date: "2/6", time: "08:00", endTime: "09:30", title: "隊輔", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 2063, day: 2, date: "2/6", time: "08:00", endTime: "09:30", title: "錄影", person: "謝承安", type: "personal", notes: "" },
+                { id: 2064, day: 2, date: "2/6", time: "08:00", endTime: "09:30", title: "隊輔", person: "李曜成", type: "personal", notes: "" },
+                { id: 2065, day: 2, date: "2/6", time: "08:00", endTime: "09:30", title: "拍照", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 2066, day: 2, date: "2/6", time: "08:00", endTime: "09:30", title: "隊輔", person: "陳子彬", type: "personal", notes: "" },
+                { id: 2067, day: 2, date: "2/6", time: "08:00", endTime: "09:30", title: "隊輔", person: "許孟凱", type: "personal", notes: "" },
+                { id: 2068, day: 2, date: "2/6", time: "08:00", endTime: "09:30", title: "課程", person: "蔡沂恩", type: "personal", notes: "講課/教學" },
+                { id: 2069, day: 2, date: "2/6", time: "08:00", endTime: "09:30", title: "課程", person: "許翌倫", type: "personal", notes: "講課/教學" },
+
+                // 09:30 休息
+                { id: 207, day: 2, date: "2/6", time: "09:30", endTime: "09:40", title: "休息", location: "帛琉教室", type: "food", pic: "All", notes: "" },
+
+                // 09:40 Period 2 (天文課程) & 提早午餐
+                { id: 208, day: 2, date: "2/6", time: "09:40", endTime: "11:10", title: "Period 2 (天文課程)", location: "帛琉教室", type: "activity", pic: "蔡沂恩, 許翌倫", notes: "分流午餐" },
+                { id: 2081, day: 2, date: "2/6", time: "09:40", endTime: "11:10", title: "隊輔", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 2082, day: 2, date: "2/6", time: "09:40", endTime: "11:10", title: "隊輔", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 2083, day: 2, date: "2/6", time: "10:30", endTime: "11:10", title: "提早拿午餐", person: "謝承安", type: "personal", notes: "" },
+                { id: 2084, day: 2, date: "2/6", time: "10:30", endTime: "11:10", title: "隊輔", person: "李曜成", type: "personal", notes: "10:30 用餐" },
+                { id: 2085, day: 2, date: "2/6", time: "10:30", endTime: "11:10", title: "提早拿午餐", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 2086, day: 2, date: "2/6", time: "09:40", endTime: "11:10", title: "隊輔", person: "陳子彬", type: "personal", notes: "" },
+                { id: 2087, day: 2, date: "2/6", time: "09:40", endTime: "11:10", title: "隊輔", person: "許孟凱", type: "personal", notes: "" },
+                { id: 2088, day: 2, date: "2/6", time: "09:40", endTime: "11:10", title: "課程", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 2089, day: 2, date: "2/6", time: "09:40", endTime: "11:10", title: "課程", person: "許翌倫", type: "personal", notes: "" },
+
+                // 11:10 午餐 (Lunch) & 收拾
+                { id: 209, day: 2, date: "2/6", time: "11:10", endTime: "12:20", title: "午餐 & 收拾", location: "帛琉教室", type: "food", pic: "許孟凱", notes: "12:00 開始收拾" },
+                { id: 2091, day: 2, date: "2/6", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 2092, day: 2, date: "2/6", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 2093, day: 2, date: "2/6", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "謝承安", type: "personal", notes: "" },
+                { id: 2094, day: 2, date: "2/6", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "李曜成", type: "personal", notes: "" },
+                { id: 2095, day: 2, date: "2/6", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 2096, day: 2, date: "2/6", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "陳子彬", type: "personal", notes: "" },
+                { id: 2097, day: 2, date: "2/6", time: "11:10", endTime: "12:20", title: "叫大家吃午餐", person: "許孟凱", type: "personal", notes: "12:00 收拾" },
+                { id: 2098, day: 2, date: "2/6", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 2099, day: 2, date: "2/6", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "許翌倫", type: "personal", notes: "" },
+
+                // 12:20 Period 3 (台灣介紹課程)
+                { id: 210, day: 2, date: "2/6", time: "12:20", endTime: "13:50", title: "Period 3 (台灣介紹課程)", location: "帛琉教室", type: "activity", pic: "涂宇軒, 謝承安", notes: "" },
+                { id: 2101, day: 2, date: "2/6", time: "12:20", endTime: "13:50", title: "隊輔", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 2102, day: 2, date: "2/6", time: "12:20", endTime: "13:50", title: "課程", person: "涂宇軒", type: "personal", notes: "講課/教學" },
+                { id: 2103, day: 2, date: "2/6", time: "12:20", endTime: "13:50", title: "課程", person: "謝承安", type: "personal", notes: "協助" },
+                { id: 2104, day: 2, date: "2/6", time: "12:20", endTime: "13:50", title: "隊輔", person: "李曜成", type: "personal", notes: "" },
+                { id: 2105, day: 2, date: "2/6", time: "12:20", endTime: "13:50", title: "拍照", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 2106, day: 2, date: "2/6", time: "12:20", endTime: "13:50", title: "隊輔", person: "陳子彬", type: "personal", notes: "" },
+                { id: 2107, day: 2, date: "2/6", time: "12:20", endTime: "13:50", title: "隊輔", person: "許孟凱", type: "personal", notes: "" },
+                { id: 2108, day: 2, date: "2/6", time: "12:20", endTime: "13:50", title: "隊輔", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 2109, day: 2, date: "2/6", time: "12:20", endTime: "13:50", title: "錄影", person: "許翌倫", type: "personal", notes: "" },
+
+                // 13:50 休息
+                { id: 211, day: 2, date: "2/6", time: "13:50", endTime: "14:00", title: "休息", location: "帛琉教室", type: "food", pic: "All", notes: "" },
+
+                // 14:00 Period 4
+                { id: 212, day: 2, date: "2/6", time: "14:00", endTime: "15:30", title: "Period 4", location: "帛琉教室", type: "activity", pic: "涂宇軒", notes: "" },
+                { id: 2121, day: 2, date: "2/6", time: "14:00", endTime: "15:30", title: "隊輔", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 2122, day: 2, date: "2/6", time: "14:00", endTime: "15:30", title: "課程", person: "涂宇軒", type: "personal", notes: "講課/教學" },
+                { id: 2123, day: 2, date: "2/6", time: "14:00", endTime: "15:30", title: "隊輔", person: "謝承安", type: "personal", notes: "" },
+                { id: 2124, day: 2, date: "2/6", time: "14:00", endTime: "15:30", title: "隊輔", person: "李曜成", type: "personal", notes: "" },
+                { id: 2125, day: 2, date: "2/6", time: "14:00", endTime: "15:30", title: "拍照", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 2126, day: 2, date: "2/6", time: "14:00", endTime: "15:30", title: "隊輔", person: "陳子彬", type: "personal", notes: "" },
+                { id: 2127, day: 2, date: "2/6", time: "14:00", endTime: "15:30", title: "隊輔", person: "許孟凱", type: "personal", notes: "" },
+                { id: 2128, day: 2, date: "2/6", time: "14:00", endTime: "15:30", title: "隊輔", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 2129, day: 2, date: "2/6", time: "14:00", endTime: "15:30", title: "錄影", person: "許翌倫", type: "personal", notes: "" },
+
+                // 15:30 收拾 / 收教材
+                { id: 213, day: 2, date: "2/6", time: "15:30", endTime: "15:45", title: "收拾 / 收教材", location: "帛琉教室", type: "logistics", pic: "許孟凱", notes: "驗收收拾" },
+                { id: 2131, day: 2, date: "2/6", time: "15:30", endTime: "15:45", title: "收東西", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 2132, day: 2, date: "2/6", time: "15:30", endTime: "15:45", title: "收教材", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 2133, day: 2, date: "2/6", time: "15:30", endTime: "15:45", title: "收東西", person: "謝承安", type: "personal", notes: "" },
+                { id: 2134, day: 2, date: "2/6", time: "15:30", endTime: "15:45", title: "收東西", person: "李曜成", type: "personal", notes: "" },
+                { id: 2135, day: 2, date: "2/6", time: "15:30", endTime: "15:45", title: "收東西", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 2136, day: 2, date: "2/6", time: "15:30", endTime: "15:45", title: "收東西", person: "陳子彬", type: "personal", notes: "" },
+                { id: 2137, day: 2, date: "2/6", time: "15:30", endTime: "15:45", title: "驗收收拾", person: "許孟凱", type: "personal", notes: "負責檢查" },
+                { id: 2138, day: 2, date: "2/6", time: "15:30", endTime: "15:45", title: "收教材", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 2139, day: 2, date: "2/6", time: "15:30", endTime: "15:45", title: "收教材", person: "許翌倫", type: "personal", notes: "" },
+
+                // 15:45 拜會駐帛琉使館
+                { id: 214, day: 2, date: "2/6", time: "15:45", endTime: "17:00", title: "拜會駐帛琉使館", location: "帛琉大使館", type: "activity", pic: "All", notes: "宣傳IG" },
+                { id: 2141, day: 2, date: "2/6", time: "15:45", endTime: "17:00", title: "帶白布條", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 2142, day: 2, date: "2/6", time: "15:45", endTime: "17:00", title: "帶明信片", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 2143, day: 2, date: "2/6", time: "15:45", endTime: "17:00", title: "帶相機、錄影", person: "謝承安", type: "personal", notes: "" },
+                { id: 2144, day: 2, date: "2/6", time: "15:45", endTime: "17:00", title: "帶社旗", person: "李曜成", type: "personal", notes: "" },
+                { id: 2145, day: 2, date: "2/6", time: "15:45", endTime: "17:00", title: "拜會", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 2146, day: 2, date: "2/6", time: "15:45", endTime: "17:00", title: "拜會", person: "陳子彬", type: "personal", notes: "" },
+                { id: 2147, day: 2, date: "2/6", time: "15:45", endTime: "17:00", title: "拜會", person: "許孟凱", type: "personal", notes: "" },
+                { id: 2148, day: 2, date: "2/6", time: "15:45", endTime: "17:00", title: "拜會", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 2149, day: 2, date: "2/6", time: "15:45", endTime: "17:00", title: "帶清大社旗、海報", person: "許翌倫", type: "personal", notes: "" },
+
+                // 17:00 SSH_夜市 mode (準備與佈置)
+                { id: 215, day: 2, date: "2/6", time: "17:00", endTime: "19:00", title: "SSH_夜市準備", location: "夜市", type: "logistics", pic: "All", notes: "20:00 撤" },
+                { id: 2151, day: 2, date: "2/6", time: "17:00", endTime: "19:00", title: "帶星空雲台", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 2152, day: 2, date: "2/6", time: "17:00", endTime: "19:00", title: "星導", person: "涂宇軒", type: "personal", notes: "導覽準備" },
+                { id: 2153, day: 2, date: "2/6", time: "17:00", endTime: "19:00", title: "拍照控場", person: "謝承安", type: "personal", notes: "" },
+                { id: 2154, day: 2, date: "2/6", time: "17:00", endTime: "19:00", title: "確定儀器", person: "李曜成", type: "personal", notes: "" },
+                { id: 2155, day: 2, date: "2/6", time: "17:00", endTime: "19:00", title: "帶 Seestar", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 2156, day: 2, date: "2/6", time: "17:00", endTime: "19:00", title: "帶桌子", person: "陳子彬", type: "personal", notes: "" },
+                { id: 2157, day: 2, date: "2/6", time: "17:00", endTime: "19:00", title: "機動兼捕食", person: "許孟凱", type: "personal", notes: "" },
+                { id: 2158, day: 2, date: "2/6", time: "17:00", endTime: "19:00", title: "帶星圖", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 2159, day: 2, date: "2/6", time: "17:00", endTime: "19:00", title: "帶雙筒、海報", person: "許翌倫", type: "personal", notes: "" },
+
+                // 19:00 夜市 SSH (路邊天文/科學擺攤)
+                { id: 216, day: 2, date: "2/6", time: "19:00", endTime: "21:00", title: "夜市 SSH", location: "夜市", type: "activity", pic: "All", notes: "" },
+                { id: 2161, day: 2, date: "2/6", time: "19:00", endTime: "21:00", title: "SSH", person: "陳柏翰", type: "personal", notes: "顧攤/解說" },
+                { id: 2162, day: 2, date: "2/6", time: "19:00", endTime: "21:00", title: "星導", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 2163, day: 2, date: "2/6", time: "19:00", endTime: "21:00", title: "Seestar 操作", person: "謝承安", type: "personal", notes: "解說" },
+                { id: 2164, day: 2, date: "2/6", time: "19:00", endTime: "21:00", title: "Seestar 操作", person: "李曜成", type: "personal", notes: "解說" },
+                { id: 2165, day: 2, date: "2/6", time: "19:00", endTime: "21:00", title: "SSH", person: "陳欣鈺", type: "personal", notes: "顧攤/解說" },
+                { id: 2166, day: 2, date: "2/6", time: "19:00", endTime: "21:00", title: "發光的東西/SSH", person: "陳子彬", type: "personal", notes: "" },
+                { id: 2167, day: 2, date: "2/6", time: "19:00", endTime: "21:00", title: "發光的東西/機動", person: "許孟凱", type: "personal", notes: "" },
+                { id: 2168, day: 2, date: "2/6", time: "19:00", endTime: "21:00", title: "星導", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 2169, day: 2, date: "2/6", time: "19:00", endTime: "21:00", title: "雙筒/解說", person: "許翌倫", type: "personal", notes: "" },
+
+                // 21:00 回飯店
+                { id: 217, day: 2, date: "2/6", time: "21:00", endTime: "22:22", title: "回飯店", location: "移動中", type: "logistics", pic: "All", notes: "撤收" },
+                { id: 2171, day: 2, date: "2/6", time: "21:00", endTime: "22:22", title: "星空雲台", person: "陳柏翰", type: "personal", notes: "撤收" },
+                { id: 2172, day: 2, date: "2/6", time: "21:00", endTime: "22:22", title: "明信片", person: "涂宇軒", type: "personal", notes: "撤收" },
+                { id: 2173, day: 2, date: "2/6", time: "21:00", endTime: "22:22", title: "相機、錄影", person: "謝承安", type: "personal", notes: "撤收" },
+                { id: 2174, day: 2, date: "2/6", time: "21:00", endTime: "22:22", title: "確定儀器", person: "李曜成", type: "personal", notes: "撤收" },
+                { id: 2175, day: 2, date: "2/6", time: "21:00", endTime: "22:22", title: "Seestar", person: "陳欣鈺", type: "personal", notes: "撤收" },
+                { id: 2176, day: 2, date: "2/6", time: "21:00", endTime: "22:22", title: "桌子", person: "陳子彬", type: "personal", notes: "撤收" },
+                { id: 2177, day: 2, date: "2/6", time: "21:00", endTime: "22:22", title: "發光的東西", person: "許孟凱", type: "personal", notes: "撤收" },
+                { id: 2178, day: 2, date: "2/6", time: "21:00", endTime: "22:22", title: "星圖", person: "蔡沂恩", type: "personal", notes: "撤收" },
+                { id: 2179, day: 2, date: "2/6", time: "21:00", endTime: "22:22", title: "雙筒、海報", person: "許翌倫", type: "personal", notes: "撤收" },
+
+                // 22:22 隔日活動預演 / 小檢討
+                { id: 218, day: 2, date: "2/6", time: "22:22", endTime: "23:33", title: "預演/小檢", location: "飯店", type: "activity", pic: "All", notes: "" },
+                { id: 2181, day: 2, date: "2/6", time: "22:22", endTime: "23:33", title: "檢討", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 2182, day: 2, date: "2/6", time: "22:22", endTime: "23:33", title: "檢討", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 2183, day: 2, date: "2/6", time: "22:22", endTime: "23:33", title: "檢討", person: "謝承安", type: "personal", notes: "" },
+                { id: 2184, day: 2, date: "2/6", time: "22:22", endTime: "23:33", title: "檢討", person: "李曜成", type: "personal", notes: "" },
+                { id: 2185, day: 2, date: "2/6", time: "22:22", endTime: "23:33", title: "檢討", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 2186, day: 2, date: "2/6", time: "22:22", endTime: "23:33", title: "檢討", person: "陳子彬", type: "personal", notes: "" },
+                { id: 2187, day: 2, date: "2/6", time: "22:22", endTime: "23:33", title: "檢討", person: "許孟凱", type: "personal", notes: "" },
+                { id: 2188, day: 2, date: "2/6", time: "22:22", endTime: "23:33", title: "檢討", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 2189, day: 2, date: "2/6", time: "22:22", endTime: "23:33", title: "檢討", person: "許翌倫", type: "personal", notes: "" },
+
+
+                // Day 5: Feb 9 (Sun) - 大氣課程 + SSH
+                // 07:00 起床吃飯
+                { id: 501, day: 5, date: "2/9", time: "07:00", endTime: "07:30", title: "起床吃飯", location: "飯店", type: "food", pic: "All", notes: "" },
+                { id: 5011, day: 5, date: "2/9", time: "07:00", endTime: "07:30", title: "早餐", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 5012, day: 5, date: "2/9", time: "07:00", endTime: "07:30", title: "早餐", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 5013, day: 5, date: "2/9", time: "07:00", endTime: "07:30", title: "早餐", person: "謝承安", type: "personal", notes: "" },
+                { id: 5014, day: 5, date: "2/9", time: "07:00", endTime: "07:30", title: "早餐", person: "李曜成", type: "personal", notes: "" },
+                { id: 5015, day: 5, date: "2/9", time: "07:00", endTime: "07:30", title: "早餐", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 5016, day: 5, date: "2/9", time: "07:00", endTime: "07:30", title: "早餐", person: "陳子彬", type: "personal", notes: "" },
+                { id: 5017, day: 5, date: "2/9", time: "07:00", endTime: "07:30", title: "早餐", person: "許孟凱", type: "personal", notes: "" },
+                { id: 5018, day: 5, date: "2/9", time: "07:00", endTime: "07:30", title: "早餐", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 5019, day: 5, date: "2/9", time: "07:00", endTime: "07:30", title: "早餐", person: "許翌倫", type: "personal", notes: "" },
+
+                // 07:30 前往帛琉高中
+                { id: 502, day: 5, date: "2/9", time: "07:30", endTime: "07:50", title: "前往帛琉高中", location: "移動中", type: "logistics", pic: "All", notes: "Taxi * 3" },
+                { id: 5021, day: 5, date: "2/9", time: "07:30", endTime: "07:50", title: "Taxi 1", person: "陳柏翰", type: "personal", notes: "帶星空雲台" },
+                { id: 5022, day: 5, date: "2/9", time: "07:30", endTime: "07:50", title: "Taxi 2", person: "涂宇軒", type: "personal", notes: "帶明信片" },
+                { id: 5023, day: 5, date: "2/9", time: "07:30", endTime: "07:50", title: "Taxi 1", person: "謝承安", type: "personal", notes: "" },
+                { id: 5024, day: 5, date: "2/9", time: "07:30", endTime: "07:50", title: "Taxi 1", person: "李曜成", type: "personal", notes: "確定儀器" },
+                { id: 5025, day: 5, date: "2/9", time: "07:30", endTime: "07:50", title: "Taxi 1", person: "陳欣鈺", type: "personal", notes: "帶 Seestar" },
+                { id: 5026, day: 5, date: "2/9", time: "07:30", endTime: "07:50", title: "Taxi 3", person: "陳子彬", type: "personal", notes: "" },
+                { id: 5027, day: 5, date: "2/9", time: "07:30", endTime: "07:50", title: "Taxi 2", person: "許孟凱", type: "personal", notes: "帶發光的東西" },
+                { id: 5028, day: 5, date: "2/9", time: "07:30", endTime: "07:50", title: "Taxi 2", person: "蔡沂恩", type: "personal", notes: "帶星圖" },
+                { id: 5029, day: 5, date: "2/9", time: "07:30", endTime: "07:50", title: "Taxi 2", person: "許翌倫", type: "personal", notes: "帶雙筒、海報" },
+
+                // 07:50 課程準備
+                { id: 503, day: 5, date: "2/9", time: "07:50", endTime: "08:00", title: "課程準備", location: "帛琉教室", type: "activity", pic: "All", notes: "" },
+                { id: 5031, day: 5, date: "2/9", time: "07:50", endTime: "08:00", title: "隊輔", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 5032, day: 5, date: "2/9", time: "07:50", endTime: "08:00", title: "隊輔", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 5033, day: 5, date: "2/9", time: "07:50", endTime: "08:00", title: "錄影", person: "謝承安", type: "personal", notes: "" },
+                { id: 5034, day: 5, date: "2/9", time: "07:50", endTime: "08:00", title: "準備 Arduino", person: "李曜成", type: "personal", notes: "" },
+                { id: 5035, day: 5, date: "2/9", time: "07:50", endTime: "08:00", title: "準備簡報", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 5036, day: 5, date: "2/9", time: "07:50", endTime: "08:00", title: "隊輔", person: "陳子彬", type: "personal", notes: "" },
+                { id: 5037, day: 5, date: "2/9", time: "07:50", endTime: "08:00", title: "隊輔", person: "許孟凱", type: "personal", notes: "" },
+                { id: 5038, day: 5, date: "2/9", time: "07:50", endTime: "08:00", title: "隊輔", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 5039, day: 5, date: "2/9", time: "07:50", endTime: "08:00", title: "攝影", person: "許翌倫", type: "personal", notes: "" },
+
+                // 08:00 Period 1 (大氣 + Arduino 課程)
+                { id: 504, day: 5, date: "2/9", time: "08:00", endTime: "09:30", title: "Period 1 (大氣 + Arduino)", location: "帛琉教室", type: "activity", pic: "李曜成", notes: "" },
+                { id: 5041, day: 5, date: "2/9", time: "08:00", endTime: "09:30", title: "隊輔", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 5042, day: 5, date: "2/9", time: "08:00", endTime: "09:30", title: "隊輔", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 5043, day: 5, date: "2/9", time: "08:00", endTime: "09:30", title: "錄影", person: "謝承安", type: "personal", notes: "" },
+                { id: 5044, day: 5, date: "2/9", time: "08:00", endTime: "09:30", title: "課程支援", person: "李曜成", type: "personal", notes: "分好 Arduino" },
+                { id: 5045, day: 5, date: "2/9", time: "08:00", endTime: "09:30", title: "課程支援", person: "陳欣鈺", type: "personal", notes: "準備簡報" },
+                { id: 5046, day: 5, date: "2/9", time: "08:00", endTime: "09:30", title: "隊輔", person: "陳子彬", type: "personal", notes: "" },
+                { id: 5047, day: 5, date: "2/9", time: "08:00", endTime: "09:30", title: "隊輔", person: "許孟凱", type: "personal", notes: "" },
+                { id: 5048, day: 5, date: "2/9", time: "08:00", endTime: "09:30", title: "隊輔", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 5049, day: 5, date: "2/9", time: "08:00", endTime: "09:30", title: "攝影", person: "許翌倫", type: "personal", notes: "" },
+
+                // 09:30 下課休息
+                { id: 505, day: 5, date: "2/9", time: "09:30", endTime: "09:40", title: "休息", location: "帛琉教室", type: "food", pic: "All", notes: "" },
+
+                // 09:40 Period 2 (大氣 + Arduino 課程)
+                { id: 506, day: 5, date: "2/9", time: "09:40", endTime: "11:10", title: "Period 2 (大氣 + Arduino)", location: "帛琉教室", type: "activity", pic: "李曜成", notes: "" },
+                { id: 5061, day: 5, date: "2/9", time: "09:40", endTime: "11:10", title: "隊輔", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 5062, day: 5, date: "2/9", time: "09:40", endTime: "11:10", title: "隊輔", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 5063, day: 5, date: "2/9", time: "09:40", endTime: "11:10", title: "錄影", person: "謝承安", type: "personal", notes: "" },
+                { id: 5064, day: 5, date: "2/9", time: "09:40", endTime: "11:10", title: "課程支援", person: "李曜成", type: "personal", notes: "分好 Arduino" },
+                { id: 5065, day: 5, date: "2/9", time: "09:40", endTime: "11:10", title: "課程支援", person: "陳欣鈺", type: "personal", notes: "準備簡報" },
+                { id: 5066, day: 5, date: "2/9", time: "09:40", endTime: "11:10", title: "隊輔", person: "陳子彬", type: "personal", notes: "" },
+                { id: 5067, day: 5, date: "2/9", time: "09:40", endTime: "11:10", title: "隊輔", person: "許孟凱", type: "personal", notes: "" },
+                { id: 5068, day: 5, date: "2/9", time: "09:40", endTime: "11:10", title: "隊輔", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 5069, day: 5, date: "2/9", time: "09:40", endTime: "11:10", title: "攝影", person: "許翌倫", type: "personal", notes: "" },
+
+                // 11:10 午餐 (Lunch) & 收拾
+                { id: 507, day: 5, date: "2/9", time: "11:10", endTime: "12:20", title: "午餐 & 收拾", location: "帛琉教室", type: "food", pic: "許孟凱", notes: "12:00 收拾" },
+                { id: 5071, day: 5, date: "2/9", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 5072, day: 5, date: "2/9", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 5073, day: 5, date: "2/9", time: "10:30", endTime: "11:10", title: "提早拿午餐", person: "謝承安", type: "personal", notes: "吃便當" },
+                { id: 5074, day: 5, date: "2/9", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "李曜成", type: "personal", notes: "" },
+                { id: 5075, day: 5, date: "2/9", time: "10:30", endTime: "11:10", title: "提早拿午餐", person: "陳欣鈺", type: "personal", notes: "吃便當" },
+                { id: 5076, day: 5, date: "2/9", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "陳子彬", type: "personal", notes: "" },
+                { id: 5077, day: 5, date: "2/9", time: "11:10", endTime: "12:20", title: "叫吃飯", person: "許孟凱", type: "personal", notes: "" },
+                { id: 5078, day: 5, date: "2/9", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 5079, day: 5, date: "2/9", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "許翌倫", type: "personal", notes: "" },
+
+                // 12:20 Period 3 (大氣 + Arduino 課程)
+                { id: 508, day: 5, date: "2/9", time: "12:20", endTime: "13:50", title: "Period 3 (大氣 + Arduino)", location: "帛琉教室", type: "activity", pic: "李曜成", notes: "" },
+                { id: 5081, day: 5, date: "2/9", time: "12:20", endTime: "13:50", title: "隊輔", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 5082, day: 5, date: "2/9", time: "12:20", endTime: "13:50", title: "隊輔", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 5083, day: 5, date: "2/9", time: "12:20", endTime: "13:50", title: "錄影", person: "謝承安", type: "personal", notes: "" },
+                { id: 5084, day: 5, date: "2/9", time: "12:20", endTime: "13:50", title: "課程支援", person: "李曜成", type: "personal", notes: "分好 Arduino" },
+                { id: 5085, day: 5, date: "2/9", time: "12:20", endTime: "13:50", title: "課程支援", person: "陳欣鈺", type: "personal", notes: "準備簡報" },
+                { id: 5086, day: 5, date: "2/9", time: "12:20", endTime: "13:50", title: "隊輔", person: "陳子彬", type: "personal", notes: "" },
+                { id: 5087, day: 5, date: "2/9", time: "12:20", endTime: "13:50", title: "隊輔", person: "許孟凱", type: "personal", notes: "" },
+                { id: 5088, day: 5, date: "2/9", time: "12:20", endTime: "13:50", title: "隊輔", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 5089, day: 5, date: "2/9", time: "12:20", endTime: "13:50", title: "攝影", person: "許翌倫", type: "personal", notes: "" },
+
+                // 13:50 下課休息
+                { id: 509, day: 5, date: "2/9", time: "13:50", endTime: "14:00", title: "休息", location: "帛琉教室", type: "food", pic: "All", notes: "" },
+
+                // 14:00 Period 4 (大氣 + Arduino 課程)
+                { id: 510, day: 5, date: "2/9", time: "14:00", endTime: "15:30", title: "Period 4 (大氣 + Arduino)", location: "帛琉教室", type: "activity", pic: "李曜成", notes: "" },
+                { id: 5101, day: 5, date: "2/9", time: "14:00", endTime: "15:30", title: "隊輔", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 5102, day: 5, date: "2/9", time: "14:00", endTime: "15:30", title: "隊輔", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 5103, day: 5, date: "2/9", time: "14:00", endTime: "15:30", title: "錄影", person: "謝承安", type: "personal", notes: "" },
+                { id: 5104, day: 5, date: "2/9", time: "14:00", endTime: "15:30", title: "課程支援", person: "李曜成", type: "personal", notes: "分好 Arduino" },
+                { id: 5105, day: 5, date: "2/9", time: "14:00", endTime: "15:30", title: "課程支援", person: "陳欣鈺", type: "personal", notes: "準備簡報" },
+                { id: 5106, day: 5, date: "2/9", time: "14:00", endTime: "15:30", title: "隊輔", person: "陳子彬", type: "personal", notes: "" },
+                { id: 5107, day: 5, date: "2/9", time: "14:00", endTime: "15:30", title: "隊輔", person: "許孟凱", type: "personal", notes: "" },
+                { id: 5108, day: 5, date: "2/9", time: "14:00", endTime: "15:30", title: "隊輔", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 5109, day: 5, date: "2/9", time: "14:00", endTime: "15:30", title: "攝影", person: "許翌倫", type: "personal", notes: "" },
+
+                // 15:30 大休 (整理時間)
+                { id: 511, day: 5, date: "2/9", time: "15:30", endTime: "16:00", title: "大休/整理", location: "帛琉教室", type: "logistics", pic: "All", notes: "" },
+                { id: 5111, day: 5, date: "2/9", time: "15:30", endTime: "16:00", title: "收東西", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 5112, day: 5, date: "2/9", time: "15:30", endTime: "16:00", title: "收東西", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 5113, day: 5, date: "2/9", time: "15:30", endTime: "16:00", title: "收東西", person: "謝承安", type: "personal", notes: "" },
+                { id: 5114, day: 5, date: "2/9", time: "15:30", endTime: "16:00", title: "收教材", person: "李曜成", type: "personal", notes: "" },
+                { id: 5115, day: 5, date: "2/9", time: "15:30", endTime: "16:00", title: "收東西", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 5116, day: 5, date: "2/9", time: "15:30", endTime: "16:00", title: "收東西", person: "陳子彬", type: "personal", notes: "" },
+                { id: 5117, day: 5, date: "2/9", time: "15:30", endTime: "16:00", title: "收東西", person: "許孟凱", type: "personal", notes: "" },
+                { id: 5118, day: 5, date: "2/9", time: "15:30", endTime: "16:00", title: "收東西", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 5119, day: 5, date: "2/9", time: "15:30", endTime: "16:00", title: "收東西", person: "許翌倫", type: "personal", notes: "" },
+
+                // 16:00 吃晚餐
+                { id: 512, day: 5, date: "2/9", time: "16:00", endTime: "18:00", title: "晚餐", location: "King Palace", type: "food", pic: "All", notes: "" },
+
+                // 18:00 SSH_prepare (觀測準備)
+                { id: 513, day: 5, date: "2/9", time: "18:00", endTime: "19:00", title: "SSH準備", location: "帛琉高中", type: "activity", pic: "All", notes: "" },
+                { id: 5131, day: 5, date: "2/9", time: "18:00", endTime: "19:00", title: "SSH 準備", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 5132, day: 5, date: "2/9", time: "18:00", endTime: "19:00", title: "星空導覽", person: "涂宇軒", type: "personal", notes: "準備" },
+                { id: 5133, day: 5, date: "2/9", time: "18:00", endTime: "19:00", title: "拍照控場", person: "謝承安", type: "personal", notes: "" },
+                { id: 5134, day: 5, date: "2/9", time: "18:00", endTime: "19:00", title: "顧小藍", person: "李曜成", type: "personal", notes: "" },
+                { id: 5135, day: 5, date: "2/9", time: "18:00", endTime: "19:00", title: "Seestar", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 5136, day: 5, date: "2/9", time: "18:00", endTime: "19:00", title: "SSH 準備", person: "陳子彬", type: "personal", notes: "" },
+                { id: 5137, day: 5, date: "2/9", time: "18:00", endTime: "19:00", title: "機動", person: "許孟凱", type: "personal", notes: "" },
+                { id: 5138, day: 5, date: "2/9", time: "18:00", endTime: "19:00", title: "星空導覽", person: "蔡沂恩", type: "personal", notes: "準備" },
+                { id: 5139, day: 5, date: "2/9", time: "18:00", endTime: "19:00", title: "顧小黃雙筒", person: "許翌倫", type: "personal", notes: "" },
+
+                // 19:00 SSH (正式觀測活動)
+                { id: 514, day: 5, date: "2/9", time: "19:00", endTime: "21:00", title: "SSH 觀測活動", location: "帛琉高中", type: "activity", pic: "All", notes: "" },
+                { id: 5141, day: 5, date: "2/9", time: "19:00", endTime: "21:00", title: "SSH", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 5142, day: 5, date: "2/9", time: "19:00", endTime: "21:00", title: "星空導覽", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 5143, day: 5, date: "2/9", time: "19:00", endTime: "21:00", title: "拍照控場", person: "謝承安", type: "personal", notes: "" },
+                { id: 5144, day: 5, date: "2/9", time: "19:00", endTime: "21:00", title: "顧小藍", person: "李曜成", type: "personal", notes: "" },
+                { id: 5145, day: 5, date: "2/9", time: "19:00", endTime: "21:00", title: "Seestar", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 5146, day: 5, date: "2/9", time: "19:00", endTime: "21:00", title: "SSH", person: "陳子彬", type: "personal", notes: "" },
+                { id: 5147, day: 5, date: "2/9", time: "19:00", endTime: "21:00", title: "機動", person: "許孟凱", type: "personal", notes: "" },
+                { id: 5148, day: 5, date: "2/9", time: "19:00", endTime: "21:00", title: "星空導覽", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 5149, day: 5, date: "2/9", time: "19:00", endTime: "21:00", title: "顧小黃雙筒", person: "許翌倫", type: "personal", notes: "" },
+
+                // 21:00 回飯店 / 撤收
+                { id: 515, day: 5, date: "2/9", time: "21:00", endTime: "22:22", title: "回飯店/撤收", location: "飯店", type: "logistics", pic: "All", notes: "" },
+                { id: 5151, day: 5, date: "2/9", time: "21:00", endTime: "22:22", title: "收東西", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 5152, day: 5, date: "2/9", time: "21:00", endTime: "22:22", title: "收東西", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 5153, day: 5, date: "2/9", time: "21:00", endTime: "22:22", title: "檢場", person: "謝承安", type: "personal", notes: "檢查場地/撤場" },
+                { id: 5154, day: 5, date: "2/9", time: "21:00", endTime: "22:22", title: "收東西", person: "李曜成", type: "personal", notes: "" },
+                { id: 5155, day: 5, date: "2/9", time: "21:00", endTime: "22:22", title: "收東西", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 5156, day: 5, date: "2/9", time: "21:00", endTime: "22:22", title: "收東西", person: "陳子彬", type: "personal", notes: "" },
+                { id: 5157, day: 5, date: "2/9", time: "21:00", endTime: "22:22", title: "收東西", person: "許孟凱", type: "personal", notes: "" },
+                { id: 5158, day: 5, date: "2/9", time: "21:00", endTime: "22:22", title: "收東西", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 5159, day: 5, date: "2/9", time: "21:00", endTime: "22:22", title: "收東西", person: "許翌倫", type: "personal", notes: "" },
+
+                // 22:22 隔日活動預演 / 小檢討
+                { id: 516, day: 5, date: "2/9", time: "22:22", endTime: "23:33", title: "預演/小檢", location: "飯店", type: "activity", pic: "All", notes: "" },
+                { id: 5161, day: 5, date: "2/9", time: "22:22", endTime: "23:33", title: "檢討", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 5162, day: 5, date: "2/9", time: "22:22", endTime: "23:33", title: "檢討", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 5163, day: 5, date: "2/9", time: "22:22", endTime: "23:33", title: "檢討", person: "謝承安", type: "personal", notes: "" },
+                { id: 5164, day: 5, date: "2/9", time: "22:22", endTime: "23:33", title: "檢討", person: "李曜成", type: "personal", notes: "" },
+                { id: 5165, day: 5, date: "2/9", time: "22:22", endTime: "23:33", title: "檢討", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 5166, day: 5, date: "2/9", time: "22:22", endTime: "23:33", title: "檢討", person: "陳子彬", type: "personal", notes: "" },
+                { id: 5167, day: 5, date: "2/9", time: "22:22", endTime: "23:33", title: "檢討", person: "許孟凱", type: "personal", notes: "" },
+                { id: 5168, day: 5, date: "2/9", time: "22:22", endTime: "23:33", title: "檢討", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 5169, day: 5, date: "2/9", time: "22:22", endTime: "23:33", title: "檢討", person: "許翌倫", type: "personal", notes: "" },
+
+
+                // Day 6: Feb 10 (Mon) - 生態課程 + SSH
+                // 07:00 起床吃飯
+                { id: 601, day: 6, date: "2/10", time: "07:00", endTime: "07:30", title: "起床吃飯", location: "飯店", type: "food", pic: "All", notes: "" },
+                { id: 6011, day: 6, date: "2/10", time: "07:00", endTime: "07:30", title: "早餐", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 6012, day: 6, date: "2/10", time: "07:00", endTime: "07:30", title: "早餐", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 6013, day: 6, date: "2/10", time: "07:00", endTime: "07:30", title: "早餐", person: "謝承安", type: "personal", notes: "" },
+                { id: 6014, day: 6, date: "2/10", time: "07:00", endTime: "07:30", title: "早餐", person: "李曜成", type: "personal", notes: "" },
+                { id: 6015, day: 6, date: "2/10", time: "07:00", endTime: "07:30", title: "早餐", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 6016, day: 6, date: "2/10", time: "07:00", endTime: "07:30", title: "早餐", person: "陳子彬", type: "personal", notes: "" },
+                { id: 6017, day: 6, date: "2/10", time: "07:00", endTime: "07:30", title: "早餐", person: "許孟凱", type: "personal", notes: "" },
+                { id: 6018, day: 6, date: "2/10", time: "07:00", endTime: "07:30", title: "早餐", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 6019, day: 6, date: "2/10", time: "07:00", endTime: "07:30", title: "早餐", person: "許翌倫", type: "personal", notes: "" },
+
+                // 07:30 前往帛琉高中
+                { id: 602, day: 6, date: "2/10", time: "07:30", endTime: "07:50", title: "前往帛琉高中", location: "移動中", type: "logistics", pic: "All", notes: "Taxi * 3" },
+                { id: 6021, day: 6, date: "2/10", time: "07:30", endTime: "07:50", title: "Taxi 1", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 6022, day: 6, date: "2/10", time: "07:30", endTime: "07:50", title: "Taxi 2", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 6023, day: 6, date: "2/10", time: "07:30", endTime: "07:50", title: "Taxi 1", person: "謝承安", type: "personal", notes: "" },
+                { id: 6024, day: 6, date: "2/10", time: "07:30", endTime: "07:50", title: "Taxi 1", person: "李曜成", type: "personal", notes: "看儀器" },
+                { id: 6025, day: 6, date: "2/10", time: "07:30", endTime: "07:50", title: "Taxi 2", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 6026, day: 6, date: "2/10", time: "07:30", endTime: "07:50", title: "Taxi 3/Walk", person: "陳子彬", type: "personal", notes: "" },
+                { id: 6027, day: 6, date: "2/10", time: "07:30", endTime: "07:50", title: "Taxi 1", person: "許孟凱", type: "personal", notes: "" },
+                { id: 6028, day: 6, date: "2/10", time: "07:30", endTime: "07:50", title: "Taxi 2", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 6029, day: 6, date: "2/10", time: "07:30", endTime: "07:50", title: "Taxi 2", person: "許翌倫", type: "personal", notes: "" },
+
+                // 07:50 課程準備
+                { id: 603, day: 6, date: "2/10", time: "07:50", endTime: "08:00", title: "課程準備", location: "帛琉教室", type: "activity", pic: "All", notes: "" },
+                { id: 6031, day: 6, date: "2/10", time: "07:50", endTime: "08:00", title: "準備課程", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 6032, day: 6, date: "2/10", time: "07:50", endTime: "08:00", title: "隊輔", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 6033, day: 6, date: "2/10", time: "07:50", endTime: "08:00", title: "錄影", person: "謝承安", type: "personal", notes: "" },
+                { id: 6034, day: 6, date: "2/10", time: "07:50", endTime: "08:00", title: "隊輔", person: "李曜成", type: "personal", notes: "" },
+                { id: 6035, day: 6, date: "2/10", time: "07:50", endTime: "08:00", title: "攝影", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 6036, day: 6, date: "2/10", time: "07:50", endTime: "08:00", title: "隊輔", person: "陳子彬", type: "personal", notes: "" },
+                { id: 6037, day: 6, date: "2/10", time: "07:50", endTime: "08:00", title: "準備課程", person: "許孟凱", type: "personal", notes: "" },
+                { id: 6038, day: 6, date: "2/10", time: "07:50", endTime: "08:00", title: "隊輔", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 6039, day: 6, date: "2/10", time: "07:50", endTime: "08:00", title: "隊輔", person: "許翌倫", type: "personal", notes: "" },
+
+                // 08:00 Period 1 (生態課程)
+                { id: 604, day: 6, date: "2/10", time: "08:00", endTime: "09:30", title: "Period 1 (生態課程)", location: "帛琉教室", type: "activity", pic: "陳柏翰, 許孟凱", notes: "" },
+                { id: 6041, day: 6, date: "2/10", time: "08:00", endTime: "09:30", title: "上課 (講師)", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 6042, day: 6, date: "2/10", time: "08:00", endTime: "09:30", title: "隊輔", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 6043, day: 6, date: "2/10", time: "08:00", endTime: "09:30", title: "錄影", person: "謝承安", type: "personal", notes: "" },
+                { id: 6044, day: 6, date: "2/10", time: "08:00", endTime: "09:30", title: "隊輔", person: "李曜成", type: "personal", notes: "" },
+                { id: 6045, day: 6, date: "2/10", time: "08:00", endTime: "09:30", title: "攝影", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 6046, day: 6, date: "2/10", time: "08:00", endTime: "09:30", title: "隊輔", person: "陳子彬", type: "personal", notes: "" },
+                { id: 6047, day: 6, date: "2/10", time: "08:00", endTime: "09:30", title: "上課 (講師)", person: "許孟凱", type: "personal", notes: "" },
+                { id: 6048, day: 6, date: "2/10", time: "08:00", endTime: "09:30", title: "隊輔", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 6049, day: 6, date: "2/10", time: "08:00", endTime: "09:30", title: "隊輔", person: "許翌倫", type: "personal", notes: "" },
+
+                // 09:30 下課休息
+                { id: 605, day: 6, date: "2/10", time: "09:30", endTime: "09:40", title: "休息", location: "帛琉教室", type: "food", pic: "All", notes: "" },
+
+                // 09:40 Period 2 (生態課程 - 戶外)
+                { id: 606, day: 6, date: "2/10", time: "09:40", endTime: "11:10", title: "Period 2 (生態-海邊)", location: "海邊", type: "activity", pic: "陳柏翰, 許孟凱", notes: "" },
+                { id: 6061, day: 6, date: "2/10", time: "09:40", endTime: "11:10", title: "帶隊", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 6062, day: 6, date: "2/10", time: "09:40", endTime: "11:10", title: "隊輔", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 6063, day: 6, date: "2/10", time: "09:40", endTime: "11:10", title: "錄影", person: "謝承安", type: "personal", notes: "" },
+                { id: 6064, day: 6, date: "2/10", time: "09:40", endTime: "11:10", title: "隊輔", person: "李曜成", type: "personal", notes: "" },
+                { id: 6065, day: 6, date: "2/10", time: "09:40", endTime: "11:10", title: "拿午餐", person: "陳欣鈺", type: "personal", notes: "10:30 便當" },
+                { id: 6066, day: 6, date: "2/10", time: "09:40", endTime: "11:10", title: "隊輔", person: "陳子彬", type: "personal", notes: "" },
+                { id: 6067, day: 6, date: "2/10", time: "09:40", endTime: "11:10", title: "壓隊", person: "許孟凱", type: "personal", notes: "" },
+                { id: 6068, day: 6, date: "2/10", time: "09:40", endTime: "11:10", title: "隊輔", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 6069, day: 6, date: "2/10", time: "09:40", endTime: "11:10", title: "隊輔", person: "許翌倫", type: "personal", notes: "" },
+
+                // 11:10 午餐 (Lunch)
+                { id: 607, day: 6, date: "2/10", time: "11:10", endTime: "12:20", title: "午餐", location: "海邊", type: "food", pic: "許孟凱", notes: "12:00 收拾" },
+                { id: 6071, day: 6, date: "2/10", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 6072, day: 6, date: "2/10", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 6073, day: 6, date: "2/10", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "謝承安", type: "personal", notes: "" },
+                { id: 6074, day: 6, date: "2/10", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "李曜成", type: "personal", notes: "" },
+                { id: 6075, day: 6, date: "2/10", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 6076, day: 6, date: "2/10", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "陳子彬", type: "personal", notes: "" },
+                { id: 6077, day: 6, date: "2/10", time: "11:10", endTime: "12:20", title: "叫吃飯", person: "許孟凱", type: "personal", notes: "" },
+                { id: 6078, day: 6, date: "2/10", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 6079, day: 6, date: "2/10", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "許翌倫", type: "personal", notes: "" },
+
+                // 12:20 Period 3 (生態課程)
+                { id: 608, day: 6, date: "2/10", time: "12:20", endTime: "13:50", title: "Period 3 (生態課程)", location: "帛琉教室", type: "activity", pic: "陳柏翰, 許孟凱", notes: "" },
+                { id: 6081, day: 6, date: "2/10", time: "12:20", endTime: "13:50", title: "準備課程", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 6082, day: 6, date: "2/10", time: "12:20", endTime: "13:50", title: "隊輔", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 6083, day: 6, date: "2/10", time: "12:20", endTime: "13:50", title: "錄影", person: "謝承安", type: "personal", notes: "" },
+                { id: 6084, day: 6, date: "2/10", time: "12:20", endTime: "13:50", title: "隊輔", person: "李曜成", type: "personal", notes: "" },
+                { id: 6085, day: 6, date: "2/10", time: "12:20", endTime: "13:50", title: "攝影", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 6086, day: 6, date: "2/10", time: "12:20", endTime: "13:50", title: "隊輔", person: "陳子彬", type: "personal", notes: "" },
+                { id: 6087, day: 6, date: "2/10", time: "12:20", endTime: "13:50", title: "準備課程", person: "許孟凱", type: "personal", notes: "" },
+                { id: 6088, day: 6, date: "2/10", time: "12:20", endTime: "13:50", title: "隊輔", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 6089, day: 6, date: "2/10", time: "12:20", endTime: "13:50", title: "隊輔", person: "許翌倫", type: "personal", notes: "" },
+
+                // 13:50 下課休息
+                { id: 609, day: 6, date: "2/10", time: "13:50", endTime: "14:00", title: "休息", location: "帛琉教室", type: "food", pic: "All", notes: "" },
+
+                // 14:00 Period 4 (生態課程 - 戶外)
+                { id: 610, day: 6, date: "2/10", time: "14:00", endTime: "15:30", title: "Period 4 (生態-海邊)", location: "海邊", type: "activity", pic: "陳柏翰, 許孟凱", notes: "" },
+                { id: 6101, day: 6, date: "2/10", time: "14:00", endTime: "15:30", title: "上課", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 6102, day: 6, date: "2/10", time: "14:00", endTime: "15:30", title: "隊輔", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 6103, day: 6, date: "2/10", time: "14:00", endTime: "15:30", title: "錄影", person: "謝承安", type: "personal", notes: "" },
+                { id: 6104, day: 6, date: "2/10", time: "14:00", endTime: "15:30", title: "隊輔", person: "李曜成", type: "personal", notes: "" },
+                { id: 6105, day: 6, date: "2/10", time: "14:00", endTime: "15:30", title: "攝影", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 6106, day: 6, date: "2/10", time: "14:00", endTime: "15:30", title: "隊輔", person: "陳子彬", type: "personal", notes: "" },
+                { id: 6107, day: 6, date: "2/10", time: "14:00", endTime: "15:30", title: "上課", person: "許孟凱", type: "personal", notes: "" },
+                { id: 6108, day: 6, date: "2/10", time: "14:00", endTime: "15:30", title: "隊輔", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 6109, day: 6, date: "2/10", time: "14:00", endTime: "15:30", title: "隊輔", person: "許翌倫", type: "personal", notes: "" },
+
+                // 15:30 大休 (移動/整理)
+                { id: 611, day: 6, date: "2/10", time: "15:30", endTime: "16:00", title: "大休/移動", location: "移動中", type: "logistics", pic: "All", notes: "返回教室" },
+                { id: 6111, day: 6, date: "2/10", time: "15:30", endTime: "16:00", title: "帶隊", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 6112, day: 6, date: "2/10", time: "15:30", endTime: "16:00", title: "整理/移動", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 6113, day: 6, date: "2/10", time: "15:30", endTime: "16:00", title: "整理/移動", person: "謝承安", type: "personal", notes: "" },
+                { id: 6114, day: 6, date: "2/10", time: "15:30", endTime: "16:00", title: "整理/移動", person: "李曜成", type: "personal", notes: "" },
+                { id: 6115, day: 6, date: "2/10", time: "15:30", endTime: "16:00", title: "整理/移動", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 6116, day: 6, date: "2/10", time: "15:30", endTime: "16:00", title: "整理/移動", person: "陳子彬", type: "personal", notes: "" },
+                { id: 6117, day: 6, date: "2/10", time: "15:30", endTime: "16:00", title: "壓隊", person: "許孟凱", type: "personal", notes: "" },
+                { id: 6118, day: 6, date: "2/10", time: "15:30", endTime: "16:00", title: "整理/移動", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 6119, day: 6, date: "2/10", time: "15:30", endTime: "16:00", title: "整理/移動", person: "許翌倫", type: "personal", notes: "" },
+
+                // 16:00 吃晚餐
+                { id: 612, day: 6, date: "2/10", time: "16:00", endTime: "18:00", title: "晚餐", location: "Desomel...", type: "food", pic: "All", notes: "" },
+
+                // 18:00 SSH_prepare (觀測準備)
+                { id: 613, day: 6, date: "2/10", time: "18:00", endTime: "19:00", title: "SSH準備", location: "帛琉高中", type: "activity", pic: "All", notes: "" },
+                { id: 6131, day: 6, date: "2/10", time: "18:00", endTime: "19:00", title: "SSH 準備", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 6132, day: 6, date: "2/10", time: "18:00", endTime: "19:00", title: "星空導覽", person: "涂宇軒", type: "personal", notes: "準備" },
+                { id: 6133, day: 6, date: "2/10", time: "18:00", endTime: "19:00", title: "拍照控場", person: "謝承安", type: "personal", notes: "" },
+                { id: 6134, day: 6, date: "2/10", time: "18:00", endTime: "19:00", title: "顧小藍", person: "李曜成", type: "personal", notes: "" },
+                { id: 6135, day: 6, date: "2/10", time: "18:00", endTime: "19:00", title: "Seestar", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 6136, day: 6, date: "2/10", time: "18:00", endTime: "19:00", title: "SSH 準備", person: "陳子彬", type: "personal", notes: "" },
+                { id: 6137, day: 6, date: "2/10", time: "18:00", endTime: "19:00", title: "機動", person: "許孟凱", type: "personal", notes: "" },
+                { id: 6138, day: 6, date: "2/10", time: "18:00", endTime: "19:00", title: "星空導覽", person: "蔡沂恩", type: "personal", notes: "準備" },
+                { id: 6139, day: 6, date: "2/10", time: "18:00", endTime: "19:00", title: "顧小黃雙筒", person: "許翌倫", type: "personal", notes: "" },
+
+                // 19:00 SSH (正式觀測活動)
+                { id: 614, day: 6, date: "2/10", time: "19:00", endTime: "21:00", title: "SSH 觀測活動", location: "帛琉高中", type: "activity", pic: "All", notes: "" },
+                { id: 6141, day: 6, date: "2/10", time: "19:00", endTime: "21:00", title: "SSH", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 6142, day: 6, date: "2/10", time: "19:00", endTime: "21:00", title: "星空導覽", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 6143, day: 6, date: "2/10", time: "19:00", endTime: "21:00", title: "拍照控場", person: "謝承安", type: "personal", notes: "" },
+                { id: 6144, day: 6, date: "2/10", time: "19:00", endTime: "21:00", title: "顧小藍", person: "李曜成", type: "personal", notes: "" },
+                { id: 6145, day: 6, date: "2/10", time: "19:00", endTime: "21:00", title: "Seestar", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 6146, day: 6, date: "2/10", time: "19:00", endTime: "21:00", title: "SSH", person: "陳子彬", type: "personal", notes: "" },
+                { id: 6147, day: 6, date: "2/10", time: "19:00", endTime: "21:00", title: "機動", person: "許孟凱", type: "personal", notes: "" },
+                { id: 6148, day: 6, date: "2/10", time: "19:00", endTime: "21:00", title: "星空導覽", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 6149, day: 6, date: "2/10", time: "19:00", endTime: "21:00", title: "顧小黃雙筒", person: "許翌倫", type: "personal", notes: "" },
+
+                // 21:00 回飯店 / 撤收
+                { id: 615, day: 6, date: "2/10", time: "21:00", endTime: "22:22", title: "回飯店/撤收", location: "飯店", type: "logistics", pic: "All", notes: "" },
+                { id: 6151, day: 6, date: "2/10", time: "21:00", endTime: "22:22", title: "收東西", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 6152, day: 6, date: "2/10", time: "21:00", endTime: "22:22", title: "收東西", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 6153, day: 6, date: "2/10", time: "21:00", endTime: "22:22", title: "檢場", person: "謝承安", type: "personal", notes: "檢查場地/撤場" },
+                { id: 6154, day: 6, date: "2/10", time: "21:00", endTime: "22:22", title: "收東西", person: "李曜成", type: "personal", notes: "" },
+                { id: 6155, day: 6, date: "2/10", time: "21:00", endTime: "22:22", title: "收東西", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 6156, day: 6, date: "2/10", time: "21:00", endTime: "22:22", title: "收東西", person: "陳子彬", type: "personal", notes: "" },
+                { id: 6157, day: 6, date: "2/10", time: "21:00", endTime: "22:22", title: "收東西", person: "許孟凱", type: "personal", notes: "" },
+                { id: 6158, day: 6, date: "2/10", time: "21:00", endTime: "22:22", title: "收東西", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 6159, day: 6, date: "2/10", time: "21:00", endTime: "22:22", title: "收東西", person: "許翌倫", type: "personal", notes: "" },
+
+                // 22:22 隔日活動預演 / 小檢討
+                { id: 616, day: 6, date: "2/10", time: "22:22", endTime: "23:33", title: "預演/小檢", location: "飯店", type: "activity", pic: "All", notes: "" },
+                { id: 6161, day: 6, date: "2/10", time: "22:22", endTime: "23:33", title: "檢討", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 6162, day: 6, date: "2/10", time: "22:22", endTime: "23:33", title: "檢討", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 6163, day: 6, date: "2/10", time: "22:22", endTime: "23:33", title: "檢討", person: "謝承安", type: "personal", notes: "" },
+                { id: 6164, day: 6, date: "2/10", time: "22:22", endTime: "23:33", title: "檢討", person: "李曜成", type: "personal", notes: "" },
+                { id: 6165, day: 6, date: "2/10", time: "22:22", endTime: "23:33", title: "檢討", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 6166, day: 6, date: "2/10", time: "22:22", endTime: "23:33", title: "檢討", person: "陳子彬", type: "personal", notes: "" },
+                { id: 6167, day: 6, date: "2/10", time: "22:22", endTime: "23:33", title: "檢討", person: "許孟凱", type: "personal", notes: "" },
+                { id: 6168, day: 6, date: "2/10", time: "22:22", endTime: "23:33", title: "檢討", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 6169, day: 6, date: "2/10", time: "22:22", endTime: "23:33", title: "檢討", person: "許翌倫", type: "personal", notes: "" },
+
+
+                // Day 7: Feb 11 (Tue) - 木工/天文 + SSH
+                // 07:00 起床吃飯
+                { id: 701, day: 7, date: "2/11", time: "07:00", endTime: "07:30", title: "起床吃飯", location: "飯店", type: "food", pic: "All", notes: "" },
+                { id: 7011, day: 7, date: "2/11", time: "07:00", endTime: "07:30", title: "早餐", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 7012, day: 7, date: "2/11", time: "07:00", endTime: "07:30", title: "早餐", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 7013, day: 7, date: "2/11", time: "07:00", endTime: "07:30", title: "早餐", person: "謝承安", type: "personal", notes: "" },
+                { id: 7014, day: 7, date: "2/11", time: "07:00", endTime: "07:30", title: "早餐", person: "李曜成", type: "personal", notes: "" },
+                { id: 7015, day: 7, date: "2/11", time: "07:00", endTime: "07:30", title: "早餐", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 7016, day: 7, date: "2/11", time: "07:00", endTime: "07:30", title: "早餐", person: "陳子彬", type: "personal", notes: "" },
+                { id: 7017, day: 7, date: "2/11", time: "07:00", endTime: "07:30", title: "早餐", person: "許孟凱", type: "personal", notes: "" },
+                { id: 7018, day: 7, date: "2/11", time: "07:00", endTime: "07:30", title: "早餐", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 7019, day: 7, date: "2/11", time: "07:00", endTime: "07:30", title: "早餐", person: "許翌倫", type: "personal", notes: "" },
+
+                // 07:30 前往帛琉高中 (Walk)
+                { id: 702, day: 7, date: "2/11", time: "07:30", endTime: "07:50", title: "前往帛琉高中", location: "移動中", type: "logistics", pic: "All", notes: "步行 (Walk)" },
+                { id: 7021, day: 7, date: "2/11", time: "07:30", endTime: "07:50", title: "步行", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 7022, day: 7, date: "2/11", time: "07:30", endTime: "07:50", title: "步行", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 7023, day: 7, date: "2/11", time: "07:30", endTime: "07:50", title: "步行", person: "謝承安", type: "personal", notes: "" },
+                { id: 7024, day: 7, date: "2/11", time: "07:30", endTime: "07:50", title: "步行", person: "李曜成", type: "personal", notes: "" },
+                { id: 7025, day: 7, date: "2/11", time: "07:30", endTime: "07:50", title: "步行", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 7026, day: 7, date: "2/11", time: "07:30", endTime: "07:50", title: "步行", person: "陳子彬", type: "personal", notes: "" },
+                { id: 7027, day: 7, date: "2/11", time: "07:30", endTime: "07:50", title: "步行", person: "許孟凱", type: "personal", notes: "" },
+                { id: 7028, day: 7, date: "2/11", time: "07:30", endTime: "07:50", title: "步行", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 7029, day: 7, date: "2/11", time: "07:30", endTime: "07:50", title: "步行", person: "許翌倫", type: "personal", notes: "" },
+
+                // 07:50 課程準備
+                { id: 703, day: 7, date: "2/11", time: "07:50", endTime: "08:00", title: "課程準備", location: "帛琉教室", type: "activity", pic: "All", notes: "" },
+                { id: 7031, day: 7, date: "2/11", time: "07:50", endTime: "08:00", title: "隊輔", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 7032, day: 7, date: "2/11", time: "07:50", endTime: "08:00", title: "隊輔", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 7033, day: 7, date: "2/11", time: "07:50", endTime: "08:00", title: "錄影", person: "謝承安", type: "personal", notes: "" },
+                { id: 7034, day: 7, date: "2/11", time: "07:50", endTime: "08:00", title: "隊輔", person: "李曜成", type: "personal", notes: "" },
+                { id: 7035, day: 7, date: "2/11", time: "07:50", endTime: "08:00", title: "攝影", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 7036, day: 7, date: "2/11", time: "07:50", endTime: "08:00", title: "隊輔", person: "陳子彬", type: "personal", notes: "" },
+                { id: 7037, day: 7, date: "2/11", time: "07:50", endTime: "08:00", title: "隊輔", person: "許孟凱", type: "personal", notes: "" },
+                { id: 7038, day: 7, date: "2/11", time: "07:50", endTime: "08:00", title: "隊輔", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 7039, day: 7, date: "2/11", time: "07:50", endTime: "08:00", title: "隊輔", person: "許翌倫", type: "personal", notes: "" },
+
+                // 08:00 Period 1 (木工課程)
+                { id: 704, day: 7, date: "2/11", time: "08:00", endTime: "09:30", title: "Period 1 (木工)", location: "帛琉教室", type: "activity", pic: "All", notes: "" },
+                { id: 7041, day: 7, date: "2/11", time: "08:00", endTime: "09:30", title: "隊輔", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 7042, day: 7, date: "2/11", time: "08:00", endTime: "09:30", title: "隊輔", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 7043, day: 7, date: "2/11", time: "08:00", endTime: "09:30", title: "錄影", person: "謝承安", type: "personal", notes: "" },
+                { id: 7044, day: 7, date: "2/11", time: "08:00", endTime: "09:30", title: "隊輔", person: "李曜成", type: "personal", notes: "" },
+                { id: 7045, day: 7, date: "2/11", time: "08:00", endTime: "09:30", title: "攝影", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 7046, day: 7, date: "2/11", time: "08:00", endTime: "09:30", title: "隊輔", person: "陳子彬", type: "personal", notes: "" },
+                { id: 7047, day: 7, date: "2/11", time: "08:00", endTime: "09:30", title: "隊輔", person: "許孟凱", type: "personal", notes: "" },
+                { id: 7048, day: 7, date: "2/11", time: "08:00", endTime: "09:30", title: "隊輔", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 7049, day: 7, date: "2/11", time: "08:00", endTime: "09:30", title: "隊輔", person: "許翌倫", type: "personal", notes: "" },
+
+                // 09:30 下課休息
+                { id: 705, day: 7, date: "2/11", time: "09:30", endTime: "09:40", title: "休息", location: "帛琉教室", type: "food", pic: "All", notes: "" },
+
+                // 09:40 Period 2 (木工課程)
+                { id: 706, day: 7, date: "2/11", time: "09:40", endTime: "11:10", title: "Period 2 (木工)", location: "帛琉教室", type: "activity", pic: "All", notes: "" },
+                { id: 7061, day: 7, date: "2/11", time: "09:40", endTime: "11:10", title: "隊輔", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 7062, day: 7, date: "2/11", time: "09:40", endTime: "11:10", title: "隊輔", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 7063, day: 7, date: "2/11", time: "09:40", endTime: "11:10", title: "錄影", person: "謝承安", type: "personal", notes: "" },
+                { id: 7064, day: 7, date: "2/11", time: "09:40", endTime: "11:10", title: "隊輔", person: "李曜成", type: "personal", notes: "" },
+                { id: 7065, day: 7, date: "2/11", time: "09:40", endTime: "11:10", title: "拿午餐", person: "陳欣鈺", type: "personal", notes: "10:30 便當" },
+                { id: 7066, day: 7, date: "2/11", time: "09:40", endTime: "11:10", title: "拿午餐", person: "陳子彬", type: "personal", notes: "10:30 便當" },
+                { id: 7067, day: 7, date: "2/11", time: "09:40", endTime: "11:10", title: "隊輔", person: "許孟凱", type: "personal", notes: "" },
+                { id: 7068, day: 7, date: "2/11", time: "09:40", endTime: "11:10", title: "隊輔", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 7069, day: 7, date: "2/11", time: "09:40", endTime: "11:10", title: "隊輔", person: "許翌倫", type: "personal", notes: "" },
+
+                // 11:10 午餐 (Lunch) & 收拾
+                { id: 707, day: 7, date: "2/11", time: "11:10", endTime: "12:20", title: "午餐 & 收拾", location: "帛琉教室", type: "food", pic: "許孟凱", notes: "12:00 收拾" },
+                { id: 7071, day: 7, date: "2/11", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 7072, day: 7, date: "2/11", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 7073, day: 7, date: "2/11", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "謝承安", type: "personal", notes: "" },
+                { id: 7074, day: 7, date: "2/11", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "李曜成", type: "personal", notes: "" },
+                { id: 7075, day: 7, date: "2/11", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 7076, day: 7, date: "2/11", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "陳子彬", type: "personal", notes: "" },
+                { id: 7077, day: 7, date: "2/11", time: "11:10", endTime: "12:20", title: "叫吃飯", person: "許孟凱", type: "personal", notes: "" },
+                { id: 7078, day: 7, date: "2/11", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 7079, day: 7, date: "2/11", time: "11:10", endTime: "12:20", title: "12:00 收拾", person: "許翌倫", type: "personal", notes: "" },
+
+                // 12:20 Period 3 (天文課程)
+                { id: 708, day: 7, date: "2/11", time: "12:20", endTime: "13:50", title: "Period 3 (天文)", location: "帛琉教室", type: "activity", pic: "蔡沂恩, 許翌倫", notes: "" },
+                { id: 7081, day: 7, date: "2/11", time: "12:20", endTime: "13:50", title: "隊輔", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 7082, day: 7, date: "2/11", time: "12:20", endTime: "13:50", title: "隊輔", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 7083, day: 7, date: "2/11", time: "12:20", endTime: "13:50", title: "錄影", person: "謝承安", type: "personal", notes: "" },
+                { id: 7084, day: 7, date: "2/11", time: "12:20", endTime: "13:50", title: "隊輔", person: "李曜成", type: "personal", notes: "" },
+                { id: 7085, day: 7, date: "2/11", time: "12:20", endTime: "13:50", title: "拍照", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 7086, day: 7, date: "2/11", time: "12:20", endTime: "13:50", title: "隊輔", person: "陳子彬", type: "personal", notes: "" },
+                { id: 7087, day: 7, date: "2/11", time: "12:20", endTime: "13:50", title: "隊輔", person: "許孟凱", type: "personal", notes: "" },
+                { id: 7088, day: 7, date: "2/11", time: "12:20", endTime: "13:50", title: "上課 (講師)", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 7089, day: 7, date: "2/11", time: "12:20", endTime: "13:50", title: "上課 (講師)", person: "許翌倫", type: "personal", notes: "" },
+
+                // 13:50 下課休息
+                { id: 709, day: 7, date: "2/11", time: "13:50", endTime: "14:00", title: "休息", location: "帛琉教室", type: "food", pic: "All", notes: "" },
+
+                // 14:00 Period 4 (天文課程)
+                { id: 710, day: 7, date: "2/11", time: "14:00", endTime: "15:30", title: "Period 4 (天文)", location: "帛琉教室", type: "activity", pic: "蔡沂恩, 許翌倫", notes: "" },
+                { id: 7101, day: 7, date: "2/11", time: "14:00", endTime: "15:30", title: "隊輔", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 7102, day: 7, date: "2/11", time: "14:00", endTime: "15:30", title: "隊輔", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 7103, day: 7, date: "2/11", time: "14:00", endTime: "15:30", title: "錄影", person: "謝承安", type: "personal", notes: "" },
+                { id: 7104, day: 7, date: "2/11", time: "14:00", endTime: "15:30", title: "隊輔", person: "李曜成", type: "personal", notes: "" },
+                { id: 7105, day: 7, date: "2/11", time: "14:00", endTime: "15:30", title: "拍照", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 7106, day: 7, date: "2/11", time: "14:00", endTime: "15:30", title: "隊輔", person: "陳子彬", type: "personal", notes: "" },
+                { id: 7107, day: 7, date: "2/11", time: "14:00", endTime: "15:30", title: "隊輔", person: "許孟凱", type: "personal", notes: "" },
+                { id: 7108, day: 7, date: "2/11", time: "14:00", endTime: "15:30", title: "上課", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 7109, day: 7, date: "2/11", time: "14:00", endTime: "15:30", title: "上課", person: "許翌倫", type: "personal", notes: "" },
+
+                // 15:30 大休 (整理/待命)
+                { id: 711, day: 7, date: "2/11", time: "15:30", endTime: "16:00", title: "大休/整理", location: "帛琉教室", type: "logistics", pic: "All", notes: "" },
+                { id: 7111, day: 7, date: "2/11", time: "15:30", endTime: "16:00", title: "隊輔", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 7112, day: 7, date: "2/11", time: "15:30", endTime: "16:00", title: "隊輔", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 7113, day: 7, date: "2/11", time: "15:30", endTime: "16:00", title: "錄影", person: "謝承安", type: "personal", notes: "" },
+                { id: 7114, day: 7, date: "2/11", time: "15:30", endTime: "16:00", title: "隊輔", person: "李曜成", type: "personal", notes: "" },
+                { id: 7115, day: 7, date: "2/11", time: "15:30", endTime: "16:00", title: "拍照", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 7116, day: 7, date: "2/11", time: "15:30", endTime: "16:00", title: "隊輔", person: "陳子彬", type: "personal", notes: "" },
+                { id: 7117, day: 7, date: "2/11", time: "15:30", endTime: "16:00", title: "隊輔", person: "許孟凱", type: "personal", notes: "" },
+                { id: 7118, day: 7, date: "2/11", time: "15:30", endTime: "16:00", title: "上課/收尾", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 7119, day: 7, date: "2/11", time: "15:30", endTime: "16:00", title: "上課/收尾", person: "許翌倫", type: "personal", notes: "" },
+
+                // 16:00 吃晚餐
+                { id: 712, day: 7, date: "2/11", time: "16:00", endTime: "18:00", title: "晚餐", location: "The Taj", type: "food", pic: "All", notes: "印度料理" },
+
+                // 18:00 SSH_prepare (觀測準備)
+                { id: 713, day: 7, date: "2/11", time: "18:00", endTime: "19:00", title: "SSH準備", location: "帛琉高中", type: "activity", pic: "All", notes: "" },
+                { id: 7131, day: 7, date: "2/11", time: "18:00", endTime: "19:00", title: "SSH 準備", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 7132, day: 7, date: "2/11", time: "18:00", endTime: "19:00", title: "星空導覽", person: "涂宇軒", type: "personal", notes: "準備" },
+                { id: 7133, day: 7, date: "2/11", time: "18:00", endTime: "19:00", title: "拍照控場", person: "謝承安", type: "personal", notes: "" },
+                { id: 7134, day: 7, date: "2/11", time: "18:00", endTime: "19:00", title: "顧小藍", person: "李曜成", type: "personal", notes: "" },
+                { id: 7135, day: 7, date: "2/11", time: "18:00", endTime: "19:00", title: "Seestar", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 7136, day: 7, date: "2/11", time: "18:00", endTime: "19:00", title: "SSH 準備", person: "陳子彬", type: "personal", notes: "" },
+                { id: 7137, day: 7, date: "2/11", time: "18:00", endTime: "19:00", title: "機動", person: "許孟凱", type: "personal", notes: "" },
+                { id: 7138, day: 7, date: "2/11", time: "18:00", endTime: "19:00", title: "星空導覽", person: "蔡沂恩", type: "personal", notes: "準備" },
+                { id: 7139, day: 7, date: "2/11", time: "18:00", endTime: "19:00", title: "顧小黃雙筒", person: "許翌倫", type: "personal", notes: "" },
+
+                // 19:00 SSH (正式觀測活動)
+                { id: 714, day: 7, date: "2/11", time: "19:00", endTime: "21:00", title: "SSH 觀測活動", location: "帛琉高中", type: "activity", pic: "All", notes: "" },
+                { id: 7141, day: 7, date: "2/11", time: "19:00", endTime: "21:00", title: "SSH", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 7142, day: 7, date: "2/11", time: "19:00", endTime: "21:00", title: "星空導覽", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 7143, day: 7, date: "2/11", time: "19:00", endTime: "21:00", title: "拍照控場", person: "謝承安", type: "personal", notes: "" },
+                { id: 7144, day: 7, date: "2/11", time: "19:00", endTime: "21:00", title: "顧小藍", person: "李曜成", type: "personal", notes: "" },
+                { id: 7145, day: 7, date: "2/11", time: "19:00", endTime: "21:00", title: "Seestar", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 7146, day: 7, date: "2/11", time: "19:00", endTime: "21:00", title: "SSH", person: "陳子彬", type: "personal", notes: "" },
+                { id: 7147, day: 7, date: "2/11", time: "19:00", endTime: "21:00", title: "機動", person: "許孟凱", type: "personal", notes: "" },
+                { id: 7148, day: 7, date: "2/11", time: "19:00", endTime: "21:00", title: "星空導覽", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 7149, day: 7, date: "2/11", time: "19:00", endTime: "21:00", title: "顧小黃雙筒", person: "許翌倫", type: "personal", notes: "" },
+
+                // 21:00 回飯店 / 撤收
+                { id: 715, day: 7, date: "2/11", time: "21:00", endTime: "22:22", title: "回飯店/撤收", location: "飯店", type: "logistics", pic: "All", notes: "" },
+                { id: 7151, day: 7, date: "2/11", time: "21:00", endTime: "22:22", title: "收東西", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 7152, day: 7, date: "2/11", time: "21:00", endTime: "22:22", title: "收東西", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 7153, day: 7, date: "2/11", time: "21:00", endTime: "22:22", title: "檢場", person: "謝承安", type: "personal", notes: "檢查場地/撤場" },
+                { id: 7154, day: 7, date: "2/11", time: "21:00", endTime: "22:22", title: "收東西", person: "李曜成", type: "personal", notes: "" },
+                { id: 7155, day: 7, date: "2/11", time: "21:00", endTime: "22:22", title: "收東西", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 7156, day: 7, date: "2/11", time: "21:00", endTime: "22:22", title: "收東西", person: "陳子彬", type: "personal", notes: "" },
+                { id: 7157, day: 7, date: "2/11", time: "21:00", endTime: "22:22", title: "收東西", person: "許孟凱", type: "personal", notes: "" },
+                { id: 7158, day: 7, date: "2/11", time: "21:00", endTime: "22:22", title: "收東西", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 7159, day: 7, date: "2/11", time: "21:00", endTime: "22:22", title: "收東西", person: "許翌倫", type: "personal", notes: "" },
+
+                // 22:22 隔日活動預演 / 小檢討
+                { id: 716, day: 7, date: "2/11", time: "22:22", endTime: "23:33", title: "預演/小檢", location: "飯店", type: "activity", pic: "All", notes: "" },
+                { id: 7161, day: 7, date: "2/11", time: "22:22", endTime: "23:33", title: "檢討", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 7162, day: 7, date: "2/11", time: "22:22", endTime: "23:33", title: "檢討", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 7163, day: 7, date: "2/11", time: "22:22", endTime: "23:33", title: "檢討", person: "謝承安", type: "personal", notes: "" },
+                { id: 7164, day: 7, date: "2/11", time: "22:22", endTime: "23:33", title: "檢討", person: "李曜成", type: "personal", notes: "" },
+                { id: 7165, day: 7, date: "2/11", time: "22:22", endTime: "23:33", title: "檢討", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 7166, day: 7, date: "2/11", time: "22:22", endTime: "23:33", title: "檢討", person: "陳子彬", type: "personal", notes: "" },
+                { id: 7167, day: 7, date: "2/11", time: "22:22", endTime: "23:33", title: "檢討", person: "許孟凱", type: "personal", notes: "" },
+                { id: 7168, day: 7, date: "2/11", time: "22:22", endTime: "23:33", title: "檢討", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 7169, day: 7, date: "2/11", time: "22:22", endTime: "23:33", title: "檢討", person: "許翌倫", type: "personal", notes: "" },
+
+                // Day 8: Feb 12 (Wed) - 返程
+                // 07:00 起床吃飯
+                { id: 801, day: 8, date: "2/12", time: "07:00", endTime: "09:00", title: "起床吃飯", location: "飯店", type: "food", pic: "All", notes: "" },
+                { id: 8011, day: 8, date: "2/12", time: "07:00", endTime: "09:00", title: "早餐", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 8012, day: 8, date: "2/12", time: "07:00", endTime: "09:00", title: "早餐", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 8013, day: 8, date: "2/12", time: "07:00", endTime: "09:00", title: "早餐", person: "謝承安", type: "personal", notes: "" },
+                { id: 8014, day: 8, date: "2/12", time: "07:00", endTime: "09:00", title: "早餐", person: "李曜成", type: "personal", notes: "" },
+                { id: 8015, day: 8, date: "2/12", time: "07:00", endTime: "09:00", title: "早餐", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 8016, day: 8, date: "2/12", time: "07:00", endTime: "09:00", title: "早餐", person: "陳子彬", type: "personal", notes: "" },
+                { id: 8017, day: 8, date: "2/12", time: "07:00", endTime: "09:00", title: "早餐", person: "許孟凱", type: "personal", notes: "" },
+                { id: 8018, day: 8, date: "2/12", time: "07:00", endTime: "09:00", title: "早餐", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 8019, day: 8, date: "2/12", time: "07:00", endTime: "09:00", title: "早餐", person: "許翌倫", type: "personal", notes: "" },
+
+                // 09:00 自由行動
+                { id: 802, day: 8, date: "2/12", time: "09:00", endTime: "11:30", title: "自由行動", location: "帛琉高中/自由", type: "activity", pic: "All", notes: "最後整理/拿東西" },
+                { id: 8021, day: 8, date: "2/12", time: "09:00", endTime: "11:30", title: "自由", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 8022, day: 8, date: "2/12", time: "09:00", endTime: "11:30", title: "自由", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 8023, day: 8, date: "2/12", time: "09:00", endTime: "11:30", title: "自由", person: "謝承安", type: "personal", notes: "" },
+                { id: 8024, day: 8, date: "2/12", time: "09:00", endTime: "11:30", title: "自由", person: "李曜成", type: "personal", notes: "" },
+                { id: 8025, day: 8, date: "2/12", time: "09:00", endTime: "11:30", title: "自由", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 8026, day: 8, date: "2/12", time: "09:00", endTime: "11:30", title: "自由", person: "陳子彬", type: "personal", notes: "" },
+                { id: 8027, day: 8, date: "2/12", time: "09:00", endTime: "11:30", title: "自由", person: "許孟凱", type: "personal", notes: "" },
+                { id: 8028, day: 8, date: "2/12", time: "09:00", endTime: "11:30", title: "自由", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 8029, day: 8, date: "2/12", time: "09:00", endTime: "11:30", title: "自由", person: "許翌倫", type: "personal", notes: "" },
+
+                // 11:30 退房
+                { id: 803, day: 8, date: "2/12", time: "11:30", endTime: "12:00", title: "退房", location: "飯店大廳", type: "logistics", pic: "陳柏翰", notes: "" },
+                { id: 8031, day: 8, date: "2/12", time: "11:30", endTime: "12:00", title: "確認退房", person: "陳柏翰", type: "personal", notes: "負責確認" },
+                { id: 8032, day: 8, date: "2/12", time: "11:30", endTime: "12:00", title: "退房集合", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 8033, day: 8, date: "2/12", time: "11:30", endTime: "12:00", title: "退房集合", person: "謝承安", type: "personal", notes: "" },
+                { id: 8034, day: 8, date: "2/12", time: "11:30", endTime: "12:00", title: "退房集合", person: "李曜成", type: "personal", notes: "" },
+                { id: 8035, day: 8, date: "2/12", time: "11:30", endTime: "12:00", title: "退房集合", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 8036, day: 8, date: "2/12", time: "11:30", endTime: "12:00", title: "退房集合", person: "陳子彬", type: "personal", notes: "" },
+                { id: 8037, day: 8, date: "2/12", time: "11:30", endTime: "12:00", title: "退房集合", person: "許孟凱", type: "personal", notes: "" },
+                { id: 8038, day: 8, date: "2/12", time: "11:30", endTime: "12:00", title: "退房集合", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 8039, day: 8, date: "2/12", time: "11:30", endTime: "12:00", title: "退房集合", person: "許翌倫", type: "personal", notes: "" },
+
+                // 13:00 前往機場
+                { id: 804, day: 8, date: "2/12", time: "13:00", endTime: "13:30", title: "前往機場", location: "移動中", type: "logistics", pic: "All", notes: "Taxi" },
+                { id: 8041, day: 8, date: "2/12", time: "13:00", endTime: "13:30", title: "搭車", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 8042, day: 8, date: "2/12", time: "13:00", endTime: "13:30", title: "搭車", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 8043, day: 8, date: "2/12", time: "13:00", endTime: "13:30", title: "搭車", person: "謝承安", type: "personal", notes: "" },
+                { id: 8044, day: 8, date: "2/12", time: "13:00", endTime: "13:30", title: "搭車", person: "李曜成", type: "personal", notes: "" },
+                { id: 8045, day: 8, date: "2/12", time: "13:00", endTime: "13:30", title: "搭車", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 8046, day: 8, date: "2/12", time: "13:00", endTime: "13:30", title: "搭車", person: "陳子彬", type: "personal", notes: "" },
+                { id: 8047, day: 8, date: "2/12", time: "13:00", endTime: "13:30", title: "搭車", person: "許孟凱", type: "personal", notes: "" },
+                { id: 8048, day: 8, date: "2/12", time: "13:00", endTime: "13:30", title: "搭車", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 8049, day: 8, date: "2/12", time: "13:00", endTime: "13:30", title: "搭車", person: "許翌倫", type: "personal", notes: "" },
+
+                // 13:30 機場/行李
+                { id: 805, day: 8, date: "2/12", time: "13:30", endTime: "15:35", title: "機場/行李", location: "帛琉機場", type: "logistics", pic: "All", notes: "" },
+                { id: 8051, day: 8, date: "2/12", time: "13:30", endTime: "15:35", title: "確認登機", person: "陳柏翰", type: "personal", notes: "集合" },
+                { id: 8052, day: 8, date: "2/12", time: "13:30", endTime: "15:35", title: "台北行李", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 8053, day: 8, date: "2/12", time: "13:30", endTime: "15:35", title: "新竹行李", person: "謝承安", type: "personal", notes: "" },
+                { id: 8054, day: 8, date: "2/12", time: "13:30", endTime: "15:35", title: "台北行李", person: "李曜成", type: "personal", notes: "" },
+                { id: 8055, day: 8, date: "2/12", time: "13:30", endTime: "15:35", title: "台北行李", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 8056, day: 8, date: "2/12", time: "13:30", endTime: "15:35", title: "台北行李", person: "陳子彬", type: "personal", notes: "" },
+                { id: 8057, day: 8, date: "2/12", time: "13:30", endTime: "15:35", title: "台北行李", person: "許孟凱", type: "personal", notes: "" },
+                { id: 8058, day: 8, date: "2/12", time: "13:30", endTime: "15:35", title: "新竹行李", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 8059, day: 8, date: "2/12", time: "13:30", endTime: "15:35", title: "新竹行李", person: "許翌倫", type: "personal", notes: "" },
+
+                // 15:35 飛行
+                { id: 806, day: 8, date: "2/12", time: "15:35", endTime: "18:35", title: "回程飛行", location: "太平洋上空", type: "logistics", pic: "All", notes: "Palau -> TPE" },
+                { id: 8061, day: 8, date: "2/12", time: "15:35", endTime: "18:35", title: "搭機", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 8062, day: 8, date: "2/12", time: "15:35", endTime: "18:35", title: "搭機", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 8063, day: 8, date: "2/12", time: "15:35", endTime: "18:35", title: "搭機", person: "謝承安", type: "personal", notes: "" },
+                { id: 8064, day: 8, date: "2/12", time: "15:35", endTime: "18:35", title: "搭機", person: "李曜成", type: "personal", notes: "" },
+                { id: 8065, day: 8, date: "2/12", time: "15:35", endTime: "18:35", title: "搭機", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 8066, day: 8, date: "2/12", time: "15:35", endTime: "18:35", title: "搭機", person: "陳子彬", type: "personal", notes: "" },
+                { id: 8067, day: 8, date: "2/12", time: "15:35", endTime: "18:35", title: "搭機", person: "許孟凱", type: "personal", notes: "" },
+                { id: 8068, day: 8, date: "2/12", time: "15:35", endTime: "18:35", title: "搭機", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 8069, day: 8, date: "2/12", time: "15:35", endTime: "18:35", title: "搭機", person: "許翌倫", type: "personal", notes: "" },
+
+                // 18:35 抵達/回家
+                { id: 807, day: 8, date: "2/12", time: "18:35", endTime: "19:30", title: "抵達/回家", location: "桃園機場", type: "logistics", pic: "All", notes: "解散" },
+                { id: 8071, day: 8, date: "2/12", time: "18:35", endTime: "19:30", title: "專車/親友", person: "陳柏翰", type: "personal", notes: "" },
+                { id: 8072, day: 8, date: "2/12", time: "18:35", endTime: "19:30", title: "專車/親友", person: "涂宇軒", type: "personal", notes: "" },
+                { id: 8073, day: 8, date: "2/12", time: "18:35", endTime: "19:30", title: "客運", person: "謝承安", type: "personal", notes: "" },
+                { id: 8074, day: 8, date: "2/12", time: "18:35", endTime: "19:30", title: "專車/親友", person: "李曜成", type: "personal", notes: "" },
+                { id: 8075, day: 8, date: "2/12", time: "18:35", endTime: "19:30", title: "專車/親友", person: "陳欣鈺", type: "personal", notes: "" },
+                { id: 8076, day: 8, date: "2/12", time: "18:35", endTime: "19:30", title: "專車/親友", person: "陳子彬", type: "personal", notes: "" },
+                { id: 8077, day: 8, date: "2/12", time: "18:35", endTime: "19:30", title: "專車/親友", person: "許孟凱", type: "personal", notes: "" },
+                { id: 8078, day: 8, date: "2/12", time: "18:35", endTime: "19:30", title: "高鐵", person: "蔡沂恩", type: "personal", notes: "" },
+                { id: 8079, day: 8, date: "2/12", time: "18:35", endTime: "19:30", title: "客運", person: "許翌倫", type: "personal", notes: "" },
+
+                // 19:30 結束
+                { id: 808, day: 8, date: "2/12", time: "19:30", endTime: "23:59", title: "平安歸賦", location: "家", type: "activity", pic: "All", notes: "" },
+
+
+
+
+
             ],
             courses: [
                 {
@@ -893,6 +1746,14 @@
         // ==========================================
 
         function renderTimelineItem(item) {
+            // For personal items, show person name; for others show location and pic
+            const isPersonal = item.type === 'personal';
+            const locationHtml = isPersonal
+                ? `<span><i class="fa-solid fa-user text-ocean-400"></i> ${item.person || '-'}</span>`
+                : `<span><i class="fa-solid fa-location-dot text-ocean-400"></i> ${item.location || '-'}</span>
+                     <span>•</span>
+                     <span><i class="fa-solid fa-user text-ocean-400"></i> ${item.pic || '-'}</span>`;
+
             return `
             <div class="relative flex gap-4">
                 <!-- Time Column -->
@@ -907,13 +1768,11 @@
                 <!-- Card -->
                 <div class="flex-1 bg-white rounded-xl p-4 shadow-sm border border-slate-100 mb-2 cursor-pointer transition hover:shadow-md" onclick="toggleDetails(${item.id})">
                     <div class="flex justify-between items-start">
-                        <h4 class="font-bold text-slate-800">${item.title}</h4>
+                        <h4 class="font-bold text-slate-800">${item.title || '-'}</h4>
                         <div class="text-[10px] uppercase font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded tracking-wide">${item.type}</div>
                     </div>
                     <div class="flex items-center text-xs text-slate-500 mt-1 gap-2">
-                         <span><i class="fa-solid fa-location-dot text-ocean-400"></i> ${item.location}</span>
-                         <span>•</span>
-                         <span><i class="fa-solid fa-user text-ocean-400"></i> ${item.pic}</span>
+                         ${locationHtml}
                     </div>
 
                     <!-- Expanded Content -->
@@ -929,10 +1788,12 @@
             const map = {
                 'activity': 'bg-ocean-500',
                 'logistics': 'bg-slate-400',
-                'food': 'bg-amber-400'
+                'food': 'bg-amber-400',
+                'personal': 'bg-purple-400'
             };
             return map[type] || 'bg-slate-300';
         }
+
 
         // ==========================================
         // CLOUD SYNC
@@ -1363,7 +2224,14 @@
 
         function renderScheduleList(day) {
             const listContainer = document.getElementById('schedule-list');
-            const items = DATA.schedule.filter(s => s.day === day);
+            // Filter: Show item if it's NOT personal OR if it matches current user
+            const items = DATA.schedule.filter(s => {
+                if (s.day !== day) return false;
+                if (s.type === 'personal') {
+                    return s.person === State.user;
+                }
+                return true;
+            });
 
             // Update Tab Styles
             document.querySelectorAll('#schedule-tabs button').forEach(btn => {
