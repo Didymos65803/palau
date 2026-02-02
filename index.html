@@ -1482,7 +1482,9 @@
                 { name: "帛琉醫院 (Belau National Hospital)", phone: "+680-488-2552" },
                 { name: "帛琉警察局 (Bureau of Public Safety)", phone: "+680-488-2423" },
                 { name: "駐帛琉共和國大使館", phone: "+680-775-6688" },
-                { name: "國內緊急聯絡人 (王子齊)", phone: "0910-936-127" }
+                { name: "國內緊急聯絡人 (王子齊)", phone: "0910-936-127" },
+                { name: "帛琉緊急聯絡人 (涂宇軒)", phone: "+886 987 718 356" },
+                { name: "緊急聯絡人 (謝承安)", phone: "請使用 Messenger 或 Line 聯絡" }
             ]
         };
 
@@ -1670,13 +1672,14 @@
                     <!-- Quick Actions Grid -->
                     <h3 class="font-bold text-slate-800 mb-4 px-1">快速功能</h3>
                     <div class="grid grid-cols-2 gap-4 mb-24">
-                        <button onclick="router.navigate('roster')" class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex flex-col items-center justify-center gap-3 active:scale-95 transition-transform hover:shadow-md">
-                            <div class="h-12 w-12 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center text-xl">
-                                <i class="fa-solid fa-clipboard-check"></i>
+                        <a href="https://docs.google.com/spreadsheets/d/1C3y5AkKG6EKRhU_LHZSLfPBwIINAa7Y3u0-lyxSm7x4/edit?gid=1602294759#gid=1602294759" target="_blank" class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex flex-col items-center justify-center gap-3 active:scale-95 transition-transform hover:shadow-md col-span-2">
+                             <div class="h-12 w-12 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-list-check"></i>
                             </div>
-                            <span class="font-semibold text-sm text-slate-700">點名</span>
-                        </button>
-                        <button onclick="router.navigate('accounting')" class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex flex-col items-center justify-center gap-3 active:scale-95 transition-transform hover:shadow-md">
+                            <span class="font-semibold text-sm text-slate-700">查看詳細活動細流</span>
+                        </a>
+
+                        <button onclick="router.navigate('accounting')" class="col-span-2 bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex flex-col items-center justify-center gap-3 active:scale-95 transition-transform hover:shadow-md">
                              <div class="h-12 w-12 rounded-full bg-violet-50 text-violet-500 flex items-center justify-center text-xl">
                                 <i class="fa-solid fa-receipt"></i>
                             </div>
@@ -1806,10 +1809,17 @@
                     <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-5 mb-8">
                         <h3 class="font-bold text-lg mb-4">新增記帳</h3>
                         <form onsubmit="addExpense(event)" class="space-y-4">
+                            <!-- Reporter -->
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1">報帳者</label>
+                                <input type="text" name="reporter" required class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-500" placeholder="誰付的錢？" value="${State.user || ''}">
+                            </div>
+
                             <div>
                                 <label class="block text-xs font-bold text-slate-500 uppercase mb-1">項目描述</label>
                                 <input type="text" name="item" required class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-500" placeholder="例如：計程車費">
                             </div>
+
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-xs font-bold text-slate-500 uppercase mb-1">金額 (USD)</label>
@@ -1826,6 +1836,22 @@
                                      </select>
                                 </div>
                             </div>
+
+                            <!-- Payment Method -->
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1">付款方式</label>
+                                <select name="paymentMethod" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-500">
+                                    <option value="Cash">現金 (Cash)</option>
+                                    <option value="Credit Card">信用卡 (Credit Card)</option>
+                                </select>
+                            </div>
+
+                            <!-- Remarks -->
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1">備註</label>
+                                <textarea name="notes" rows="2" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean-500" placeholder="補充說明..."></textarea>
+                            </div>
+
                             <div class="pt-2">
                                 <button type="submit" id="submit-btn" class="w-full bg-ocean-600 hover:bg-ocean-700 text-white font-bold py-3 rounded-lg shadow-ocean-200 shadow-md transition">新增支出</button>
                             </div>
@@ -1840,7 +1866,11 @@
                             <div class="p-4 flex justify-between items-center">
                                 <div>
                                     <p class="font-bold text-sm text-slate-800">${e.item}</p>
-                                    <p class="text-xs text-slate-400 capitalize">${e.category} • ${e.date}</p>
+                                    <p class="text-xs text-slate-400 capitalize">
+                                        ${e.category} 
+                                        ${e.reporter ? `• <span class="text-ocean-600 font-bold">${e.reporter}</span>` : ''} 
+                                        • ${e.date}
+                                    </p>
                                 </div>
                                 <span class="font-mono font-bold text-slate-700">-$${e.amount.toFixed(2)}</span>
                             </div>
@@ -1919,10 +1949,13 @@
                      <span>•</span>
                      <span><i class="fa-solid fa-user text-ocean-400"></i> ${item.pic || '-'}</span>`;
 
+            // Hide Time for Personal
+            const timeVisibility = isPersonal ? 'invisible' : '';
+
             return `
             <div class="relative flex gap-4">
                 <!-- Time Column -->
-                <div class="flex flex-col items-center min-w-[3.5rem] pt-1">
+                <div class="flex flex-col items-center min-w-[3.5rem] pt-1 ${timeVisibility}">
                     <span class="text-sm font-bold text-slate-800">${item.time}</span>
                     <span class="text-xs text-slate-400">${item.endTime}</span>
                 </div>
@@ -2007,7 +2040,11 @@
                             <div class="p-4 flex justify-between items-center">
                                 <div>
                                     <p class="font-bold text-sm text-slate-800">${e.item}</p>
-                                    <p class="text-xs text-slate-400 capitalize">${e.category} • ${e.date}</p>
+                                    <p class="text-xs text-slate-400 capitalize">
+                                        ${e.category} 
+                                        ${e.reporter ? `• <span class="text-ocean-600 font-bold">${e.reporter}</span>` : ''} 
+                                        • ${e.date}
+                                    </p>
                                 </div>
                                 <span class="font-mono font-bold text-slate-700">-$${e.amount.toFixed(2)}</span>
                             </div>
@@ -2086,6 +2123,9 @@
                 item: formData.get('item'),
                 amount: parseFloat(formData.get('amount')),
                 category: formData.get('category'),
+                reporter: formData.get('reporter'),
+                paymentMethod: formData.get('paymentMethod'),
+                notes: formData.get('notes'),
                 date: new Date().toISOString().split('T')[0],
                 user: State.user || 'Unknown'
             };
@@ -2369,8 +2409,8 @@
             // Render Tabs
             tabsContainer.innerHTML = days.map(d => {
                 // Formatting Date: Day 0 -> 2/4 (Tue)
-                // Base date: 2025-02-04
-                const dateObj = new Date(2025, 1, 4 + d); // Feb is month 1
+                // Base date: 2026-02-04. Feb 5 is Day 1.
+                const dateObj = new Date(2026, 1, 4 + d); // Feb is month 1
                 const dateStr = `${dateObj.getMonth() + 1}/${dateObj.getDate()}`;
                 const weekStr = dateObj.toLocaleDateString('zh-TW', { weekday: 'short' });
 
